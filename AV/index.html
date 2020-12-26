@@ -647,84 +647,34 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 
                 <div class="music-player">
                     <div class="title center-align">
-                        <i class="fa fa-music"></i>&nbsp;&nbsp;听听音乐
+                        <i class="fa fa-music"></i>&nbsp;&nbsp;
                     </div>
                     
-                        <!-- shw2018 洪卫  modify 2019.08.15-->
-
-
-<link rel="stylesheet" href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css">
-<div class="music-player">
-    
-    <div class="row">
-        
-        
-        <div class="col s12 ">
-            <div id="aplayer" class="music"></div>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
-<script>
-    $(function () {
-        new APlayer({
-            container: document.getElementById('aplayer'),
-            fixed: 'false' === 'true',
-            autoplay: 'false' === 'true',
-            theme: '#542674',
-            loop: 'all',
-            order: 'list',
-            preload: 'auto',
-            volume: Number('0.7'),
-            listFolded: 'false' === 'true',
-            listMaxHeight: '197px',
-            audio: JSON.parse('[{"name":"Someone Like You","artist":"Adele","url":"http://music.163.com/song/media/outer/url?id16435049.mp3","cover":"http://p4.music.126.net/l-lffSJW45DaETAp7Vi22Q==/109951165341361103.jpg"},{"name":"Main Titles","artist":"Ramin Djawadi","url":"http://music.163.com/song/media/outer/url?id32526653.mp3","cover":"http://p4.music.126.net/ME34HLKlJtYGruIxomhIOQ==/7987951976023943.jpg"},{"name":"Look At Me","artist":"Alan Jackson","url":"http://music.163.com/song/media/outer/url?id5043107.mp3","cover":"http://p3.music.126.net/kqZyT2GpdMPMyzJStLBUTw==/649811372062005.jpg"},{"name":"Sometimes When We Touch","artist":"Olivia Ong","url":"http://music.163.com/song/media/outer/url?id280578.mp3","cover":"http://p3.music.126.net/pFr84zTKvPowc73QpJ-B8w==/109951163268231736.jpg"},{"name":"Sing You To Sleep","artist":"Matt Cab","url":"http://music.163.com/song/media/outer/url?id27583241.mp3","cover":"http://p3.music.126.net/fXX8f6ejmiWbuD1n7k9zbA==/2528876745317217.jpg"},{"name":"Way Back Into Love","artist":"Haley Bennett","url":"http://music.163.com/song/media/outer/url?id5046372.mp3","cover":"http://p3.music.126.net/_WLFR2EDo0UN1jJE6UxOTg==/6659741930159840.jpg"},{"name":"A Thousand Years","artist":"Christina Perri","url":"http://music.163.com/song/media/outer/url?id2411634.mp3","cover":"http://p3.music.126.net/imNCDZt5hxkKcpaPYRQa5w==/109951163165814489.jpg"},{"name":"On a Slow Boat to China","artist":"Luke Thompson","url":"http://music.163.com/song/media/outer/url?id27591140.mp3","cover":"http://p3.music.126.net/ejPhMxa0mjw0d1yblDQ2Xw==/109951164852541434.jpg"},{"name":"Lost Stars","artist":"Keira Knightley","url":"http://music.163.com/song/media/outer/url?id28747428.mp3","cover":"http://p4.music.126.net/HfONoiydSxBFn2SMmyN3qg==/3235862724973369.jpg"},{"name":"The Last Goodbye","artist":"Billy Boyd","url":"http://music.163.com/song/media/outer/url?id29755223.mp3","cover":"http://p3.music.126.net/vmSW014aJOmlGUIc9yEOyw==/3236962233044529.jpg"},{"name":"Concerning Hobbits","artist":"Howard Shore","url":"http://music.163.com/song/media/outer/url?id1428235.mp3","cover":"http://p3.music.126.net/FfTEP4G-02MpL3Tq2U2wnQ==/109951163596318781.jpg"},{"name":"Flightless Bird, American Mouth","artist":"Iron & Wine","url":"http://music.163.com/song/media/outer/url?id5042924.mp3","cover":"http://p4.music.126.net/wqlsaSnb9bMhAFKGNbEWhA==/109951163844771391.jpg"},{"name":"Rhythm Of The Rain","artist":"Jason Donovan","url":"http://music.163.com/song/media/outer/url?id18668453.mp3","cover":"http://p4.music.126.net/aoTO1gl7lQYOh_79Ex8xDw==/6636652186139220.jpg"},{"name":"Take me hand","artist":"DAISHI DANCE","url":"http://music.163.com/song/media/outer/url?id26092806.mp3","cover":"http://p3.music.126.net/AoVFMKkLVMOmTMo_A6x02g==/109951163403515653.jpg"},{"name":"Intro","artist":"The xx","url":"http://music.163.com/song/media/outer/url?id4341314.mp3","cover":"http://p3.music.126.net/Xik6a3wXoGPOLI1GNXGdFQ==/825733232504415.jpg"},{"name":"Horizon","artist":"Janji","url":"http://music.163.com/song/media/outer/url?id30064175.mp3","cover":"http://p4.music.126.net/8pko-MebyO_1XlXms0rF9g==/109951163456840298.jpg"},{"name":"Into You","artist":"Matisse & Sadko","url":"http://music.163.com/song/media/outer/url?id523042017.mp3","cover":"http://p3.music.126.net/uiJ95JX05t47fwmOWo0kog==/109951164361917909.jpg"},{"name":"Best Song Ever","artist":"One Direction","url":"http://music.163.com/song/media/outer/url?id26902779.mp3","cover":"http://p4.music.126.net/DuKq683le12ojhzR4LE4Tw==/2537672837228502.jpg"},{"name":"Beautiful World","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=20707408.mp3","cover":"https://p2.music.126.net/MEWr-THANcYy-1jvx334_Q==/109951163167214019.jpg?param=130y130"},{"name":"River Flows in You","artist":"Yiruma","url":"http://music.163.com/song/media/outer/url?id=26237342.mp3","cover":"https://p2.music.126.net/8ZRSyI0ZN_4ah8uzsNd1mA==/2324367581169008.jpg?param=130y130"},{"name":"Hello My Love","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=1338728670.mp3","cover":"https://p2.music.126.net/P2_COhPmlhsOpoj31DDLeA==/109951163785867445.jpg?param=130y130"},{"name":"If I Let You Go","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=27220254.mp3","cover":"https://p2.music.126.net/TcOOoZSbISGT9AkhUtwOsg==/5644892697128237.jpg?param=130y130"},{"name":"Señorita","artist":"Shawn Mendes/Camila Cabello","url":"http://music.163.com/song/media/outer/url?id=1373168742.mp3","cover":"https://p2.music.126.net/eSrLKe5g3U8jX-lb629q6A==/109951164162885535.jpg?param=130y130"},{"name":"How To Break A Heart","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id20707424.mp3","cover":"http://p4.music.126.net/sxLH-ljuRs5hLFyuhSnpRA==/18348650045094688.jpg"}]')
-        });
-    });
-</script>
+                        <!-- require APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<!-- require MetingJS-->
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+<!--网易云-->
+<meting-js 
+server="netease" 
+id="123261417" 
+type="playlist" 
+mini="false" 
+fixed="false" 
+list-folded="true"
+autoplay="false" 
+volume="0.7" 
+theme="#FADFA3" 
+order="random" 
+loop="all" 
+preload="auto" 
+mutex="true">
+</meting-js>
                     
 
                 </div>
 
-                
-                <!-- shw2018 洪卫  modify 2019.08.15-->
-<link rel="stylesheet" href="https://cdn.bootcss.com/dplayer/1.25.0/DPlayer.min.css">
-<div class="video-player">
-    
-    <div class="title center-align">
-        <i class="fa fa-video-camera"></i>&nbsp;&nbsp;看看视频
-    </div>
-    
-    <div class="row">
-        
-        <div class="col l8 offset-l2 m10 offset-m1 s12"> 
-            <div id="dplayer" class="dplayer-video"
-                    ></div>
-        </div>
-
-    </div>
-</div>
-
-<script src="https://cdn.bootcss.com/dplayer/1.25.0/DPlayer.min.js"></script>
-<script>
-    $(function () {
-        new DPlayer({
-            container: document.getElementById('dplayer'),
-            autoplay: 'false' === 'true',
-            theme: '#42b983',
-            loop: 'true' === 'true',
-            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
-            preload: 'auto',
-            volume: Number('0.7'),
-            video: {
-                url: 'https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-                pic: '',
-                thumbnails: ''
-            }
-        });
-    });
-</script>
                 
 
                 
@@ -972,6 +922,8 @@ $(function () {
         
 
         
+
+        <!-- 加入APlayer音乐播放器 xiuxiny -->
 
 
         <!-- 鼠标点击烟花爆炸效果  洪卫 shw2018 add 2019.09.09 -->
