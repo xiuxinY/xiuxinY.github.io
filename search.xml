@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>将B站视频保存为本地mp4文件</title>
+      <link href="2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/"/>
+      <url>2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="下载B站mp4视频教程"><a href="#下载B站mp4视频教程" class="headerlink" title="下载B站mp4视频教程"></a>下载B站mp4视频教程</h1><p>本文是一个简单教程，一步步教大家把B站的视频保存为mp4格式。全文有以下几个部分：</p><ul><li>下载B站视频</li><li>将flv格式封装成mp4</li><li><strong><font color="red"> 内容更新，由于我姐说太麻烦，我就用pyhton写了一个小程序，一键下载并转换成MP4 </font></strong></li></ul><h2 id="一键下载"><a href="#一键下载" class="headerlink" title="一键下载"></a>一键下载</h2><p>这个小程序依托于youtube-dl和ffmpeg，实现直接粘贴就可以下载保存MP4文件。适用但不局限于B站。<br><a href="https://wws.lanzous.com/iJLvcjs7dsf">下载链接</a><br>解压后运行<code>B站mp4下载.exe</code>程序，复制B站视频链接，粘贴到窗口回车即可。自动下载保存mp4视频。<br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/10.png" alt="粘贴链接"><br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/11.png" alt="下载完成"><br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/12.png" alt="得到视频"></p><p>源代码分享：<a href="https://github.com/xiuxinY/BiliBili_Mp4_Download">Github地址</a></p><pre class="line-numbers language-none"><code class="language-none">from os import renameimport youtube_dlimport osimport timeclass GetItem(object):    def rename_hook(self, d):        if d[&#39;status&#39;] &#x3D;&#x3D; &#39;finished&#39;:            file_name &#x3D; &#39;&#123;&#125;.mp4&#39;.format(int(time.time()))            rename(d[&#39;filename&#39;], file_name)            ffmpeg &#x3D; &#39;ffmpeg.exe&#39;            fn &#x3D; file_name            output &#x3D; file_name + &#39;.mp4&#39;            cmd &#x3D; ffmpeg + &quot; -i &quot; + fn + &quot; -c copy &quot; + output            print(cmd)            res &#x3D; os.popen(cmd)            output_str &#x3D; res.read()            print(output_str)            print(&#39;下载完成&#123;&#125;&#39;.format(file_name))    def download(self, youtube_url):        ydl_opts &#x3D; &#123;            &#39;progress_hooks&#39;: [self.rename_hook],            &#39;outtmpl&#39;: &#39;%(id)s%(ext)s&#39;,        &#125;        with youtube_dl.YoutubeDL(ydl_opts) as ydl:            # 下载给定的URL列表            result &#x3D; ydl.download([youtube_url])if __name__ &#x3D;&#x3D; &#39;__main__&#39;:    getItem &#x3D; GetItem()    url_todo &#x3D; input(&quot;请输入您复制的视频链接：&quot;)    getItem.download(url_todo)input(&#39;按回车键退出~&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="视频下载"><a href="#视频下载" class="headerlink" title="视频下载"></a>视频下载</h2><h3 id="方法一、使用youtube-dl工具"><a href="#方法一、使用youtube-dl工具" class="headerlink" title="方法一、使用youtube-dl工具"></a>方法一、使用youtube-dl工具</h3><p>youtube-dl工具是一个小巧但非常强大的视频下载器，几乎支持所有的视频网站，详细具体的方法可以查看本人的一篇公众号文章：<a href="https://mp.weixin.qq.com/s?__biz=MzI1Nzc0Mzk0NQ==&mid=2247483676&idx=1&sn=b9f57d3bdf8610a573db396220a282bc&chksm=ea138c3add64052cbdd7eeef592f8f3c9c25d4f827395d7c247ebd55777bcb0949b228db1cdb&scene=126&sessionid=1609073297&key=e174d9f7b9ab855c606ce83b498eac5a06b58796b46208e6ebd2db05c6f9de3a358b0ba34368f512fb3103113538ef3f9b2e1483fa388c9fd6caa0c3b89ea94d463541591d92d4584462e596af99ab80dce3232161ca54a817806508183462df122fa5e2fa1f205c3b9379697a6d9aab93aa0d229e45a9ed27f9d9d00ea21187&ascene=1&uin=MTQ3MDIzODM3Ng==&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=AW4O4NN9+mnPJbS0mAyuqBc=&pass_ticket=OOgTTQURXT6ylLw8fBNNMLjznIJ2ZV4QmNmywaj/jdoQd4Ll3rGAlFzIC1Ef0hiq&wx_header=0">使用youtube-dl下载视频网站的视频</a><br>使用这个工具下载B站视频非常简单，步骤如下：</p><ol><li><a href="https://wws.lanzous.com/iQTtDjs4s2b">下载该工具</a></li><li>放在任意一个文件夹（记住路径，如我存放在<code>D:\Downloads\Programs</code>）中，在CMD中打开本文件夹。</li></ol><ul><li>按win+R打开“运行”窗口，输入cmd，回车<br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/2.png" alt="cmd"></li><li>打开cmd后，进入这个文件夹，在cmd命令窗口输入：cd+空格+/D+空格+D:\Downloads\Programs 直接进入文件夹。根据自己的路径改动即可。<br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/3.png" alt="窗口显示的路径变为D:\Downloads\Programs"></li></ul><ol start="3"><li>复制要下载的B站视频链接，如 <code>https://www.bilibili.com/video/BV1k4411L7Ww?from=search&amp;seid=8545305112011299542</code></li><li>在CMD中输入<code>youtube-dl https://www.bilibili.com/video/BV1k4411L7Ww?from=search&amp;seid=8545305112011299542</code><br>这样的话你会得到一个flv格式的视频。</li></ol><p>注：把链接替换成你复制的即可，注意中间的空格。<br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/1.png" alt="下载完成"></p><h3 id="方法二、使用浏览器插件"><a href="#方法二、使用浏览器插件" class="headerlink" title="方法二、使用浏览器插件"></a>方法二、使用浏览器插件</h3><p>这个方法更直白一些，步骤如下：</p><ol><li>进入<a href="https://bilibili-helper.github.io/">哔哩哔哩助手官网</a>，给你的<code>谷歌浏览器</code>或<code>Edge</code>，或者其他任何能安装谷歌浏览器插件的浏览器，如国内一些360、搜狗等。（不推荐这种流氓浏览器）</li><li>根据官网介绍和<a href="https://shimo.im/docs/PXgDrXTGcXjtWjVX/read">官方教程</a>安装插件,也可以直接在应用商店搜索安装。<br><a href="https://microsoftedge.microsoft.com/addons/detail/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E5%8A%A9%E6%89%8B%EF%BC%9Abilibilicom-%E7%BB%BC%E5%90%88%E8%BE%85%E5%8A%A9%E6%89%A9/fcfebhekhbkhjjimonjmbgmkbclheaoh?hl=zh-CN">Edge浏览器安装链接</a><br><a href="https://chrome.google.com/webstore/detail/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E5%8A%A9%E6%89%8B%EF%BC%9Abilibilicom-%E7%BB%BC%E5%90%88%E8%BE%85%E5%8A%A9%E6%89%A9%E5%B1%95/kpbnombpnpcffllnianjibmpadjolanh?hl=zh-CN">谷歌浏览器安装链接</a></li></ol><p><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/4.png" alt="官网"><br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/5.png" alt="官方教程"><br>3. 安装好后打开B站，在要下载的视频页面点击助手，选择下载的清晰度下载即可。<br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/8.png" alt="下载按钮"></p><p>这样的话你同样会得到一个flv格式的视频。</p><h2 id="转换flv为MP4"><a href="#转换flv为MP4" class="headerlink" title="转换flv为MP4"></a>转换flv为MP4</h2><p>下载小工具：<a href="https://wws.lanzous.com/iiYCZjs4sba">一键无损重新封装为mp4</a></p><ol><li>解压后得到这几个文件<br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/9.png" alt="得到的文件"></li><li>把flv格式的视频用鼠标拖动到第二个图标上即可，有黑色的cmd窗口出现，然后自动关闭，MP4文件就已经封装完成了。<br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/6.png" alt="这个窗口很快啊！一闪而过"><br><img src="/2020/12/27/jiang-b-zhan-shi-pin-bao-cun-wei-ben-di-mp4-wen-jian/7.png" alt="得到mp4视频文件"></li></ol><h3 id="两种下载方法自行选择，效果一样。第一种不需要装插件，不详细的地方可以查看公众号文章；方法二很简单。"><a href="#两种下载方法自行选择，效果一样。第一种不需要装插件，不详细的地方可以查看公众号文章；方法二很简单。" class="headerlink" title="两种下载方法自行选择，效果一样。第一种不需要装插件，不详细的地方可以查看公众号文章；方法二很简单。"></a>两种下载方法自行选择，效果一样。第一种不需要装插件，不详细的地方可以查看公众号文章；方法二很简单。</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> youtube-dl </tag>
+            
+            <tag> 视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Markdown常用语法</title>
+      <link href="2020/12/26/markdown-chang-yong-yu-fa/"/>
+      <url>2020/12/26/markdown-chang-yong-yu-fa/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none"># 一级标题 ## 二级标题 ### 三级标题 #### 四级标题 ##### 五级标题 ###### 六级标题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h1 id="粗体、斜体、删除线和下划线"><a href="#粗体、斜体、删除线和下划线" class="headerlink" title="粗体、斜体、删除线和下划线"></a>粗体、斜体、删除线和下划线</h1><h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">*斜体* **粗体** ***加粗斜体*** ~~删除线~~<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><p><em>斜体</em><br><strong>粗体</strong><br><strong><em>加粗斜体</em></strong><br><del>删除线</del></p><h1 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h1><h2 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">&gt; 文字引用<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><blockquote><p>文字引用</p></blockquote><h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><h2 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">&#96;行内代码&#96; ​&#96;&#96;&#96; 多行代码多行代码 ​&#96;&#96;&#96;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h2><p><code>行内代码</code><br>​<code>  多行代码 多行代码  ​</code></p><h1 id="公式块"><a href="#公式块" class="headerlink" title="公式块"></a>公式块</h1><h2 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">$$ 数学公式 $$<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h2><p>$$ y = x $$</p><h1 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h1><h2 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">方法一：--- 方法二：+++ 方法三：***<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h2><hr><p>+++</p><hr><h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">1. 有序列表项 * 无序列表项 + 无序列表项 - 无序列表项<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h2><ol><li>有序列表项 </li></ol><ul><li>无序列表项 </li></ul><ul><li>无序列表项 </li></ul><ul><li>无序列表项<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><h2 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">表头1|表头2 -|-|- 内容11|内容12 内容21|内容22<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h2>表头1|表头2 </li><li>|-|-<br>内容11|内容12<br>内容21|内容22<h1 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h1><h2 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">方法一：[链接文字](链接地址 &quot;链接描述&quot;) 例如：[示例链接](https:&#x2F;&#x2F;www.example.com&#x2F; &quot;示例链接&quot;) 方法二：&lt;链接地址&gt; 例如：&lt;https:&#x2F;&#x2F;www.example.com&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="示例-8"><a href="#示例-8" class="headerlink" title="示例"></a>示例</h2>方法一：<a href="%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80" title="链接描述">链接文字</a><br>例如：<a href="https://www.example.com/" title="示例链接">示例链接</a><br>方法二：&lt;链接地址&gt;<br>例如：<a href="https://www.example.com/">https://www.example.com/</a><h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><h2 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-none"><code class="language-none">![图片文字](图片地址 &quot;图片描述&quot;) 例如：![示例图片](https:&#x2F;&#x2F;www.example.com&#x2F;example.PNG &quot;示例图片&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="示例-9"><a href="#示例-9" class="headerlink" title="示例"></a>示例</h2><img src="/2020/12/26/markdown-chang-yong-yu-fa/1.jpg" alt="图片示例"></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 写文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+            <tag> MD </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo常用命令</title>
+      <link href="2020/12/26/hexo-chang-yong-ming-ling/"/>
+      <url>2020/12/26/hexo-chang-yong-ming-ling/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="1、新建文章"><a href="#1、新建文章" class="headerlink" title="1、新建文章"></a>1、新建文章</h2><pre class="line-numbers language-none"><code class="language-none">hexo new post &quot;article title&quot;hexo clhexo ghexo shexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="2、备份文件"><a href="#2、备份文件" class="headerlink" title="2、备份文件"></a>2、备份文件</h2><pre class="line-numbers language-none"><code class="language-none">git add . git commit -m &quot;backup&quot; git push origin master <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>NIST使用说明</title>
+      <link href="2020/12/23/nist-shi-yong-shuo-ming/"/>
+      <url>2020/12/23/nist-shi-yong-shuo-ming/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="NIST数据库软件使用说明"><a href="#NIST数据库软件使用说明" class="headerlink" title="NIST数据库软件使用说明"></a>NIST数据库软件使用说明</h1><p>##更新时若无数据库更新，只需替换新的exe文件即可。</p><h2 id="v2-0更新内容（2020年12月25日）Merry-Christmas"><a href="#v2-0更新内容（2020年12月25日）Merry-Christmas" class="headerlink" title="v2.0更新内容（2020年12月25日）Merry Christmas"></a>v2.0更新内容（2020年12月25日）<font color="red">Merry Christmas</font></h2><p>-<strong><font color="red"> 2.0大版本更新，带来全新的GUI界面</font></strong><br>-自由查询，不再受每次运行只能查询一个条目的限制<br>-将报告和曲线拟合绘图分开</p><h2 id="v1-5更新内容（2020年12月23日）"><a href="#v1-5更新内容（2020年12月23日）" class="headerlink" title="v1.5更新内容（2020年12月23日）"></a>v1.5更新内容（2020年12月23日）</h2><ul><li>更改绘图和报告的顺序，并把是否绘图作为可选项。</li></ul><h2 id="v1-4更新内容（2020年12月23日）"><a href="#v1-4更新内容（2020年12月23日）" class="headerlink" title="v1.4更新内容（2020年12月23日）"></a>v1.4更新内容（2020年12月23日）</h2><ul><li>无匹配等温线时不再报错闪退</li></ul><h2 id="v1-3更新内容（2020年12月22日）"><a href="#v1-3更新内容（2020年12月22日）" class="headerlink" title="v1.3更新内容（2020年12月22日）"></a>v1.3更新内容（2020年12月22日）</h2><ul><li>增加了匹配等温线后显示的详细内容，包括 [名称、温度、文献、期刊、作者、DOI]</li><li>增加了等温线绘图时基于<em>Langmuir</em>模型的拟合曲线</li><li>绘图完成后在根目录生成Excel格式查询结果 [查询概要、详细数据]</li></ul><h2 id="v2-0使用教程"><a href="#v2-0使用教程" class="headerlink" title="v2.0使用教程"></a>v2.0使用教程</h2><h3 id="1、程序下载"><a href="#1、程序下载" class="headerlink" title="1、程序下载"></a>1、程序下载</h3><p>在NAS中<code>\\Adsor-NAS\吸附量数据\NIST2021程序</code>文件夹中下载最新压缩包至电脑并解压。</p><blockquote><p>本地存放路径不可有中文。</p></blockquote><p><img src="/2020/12/23/nist-shi-yong-shuo-ming/10.png" alt="下载文件夹"></p><h3 id="2、查询等温线"><a href="#2、查询等温线" class="headerlink" title="2、查询等温线"></a>2、查询等温线</h3><p>在解压后的文件夹中找到并双击打开NIST Tool.exe文件<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/11.png" alt="main.exe"><br><strong><font color="red"> 启动时需要加载python依赖，启动时间较长，耐心等待。 </font></strong><br><img src="/2020/12/23/nist-shi-yong-shuo-ming/12.png" alt="软件界面"><br>在搜索框内分别输入吸附质、吸附剂的化学式或名称，双击框中候选项选定目标，框下方提示选取结果。无顺序限制。</p><blockquote><p>如：查询乙烯在NaY上的吸附量：</p></blockquote><p><img src="/2020/12/23/nist-shi-yong-shuo-ming/13.png" alt="选取结果"><br>选定吸附质和吸附剂后点击<strong>搜一下！</strong>，显示匹配等温线名称，在下方将显示个数。<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/14.png" alt="等温线查询结果"><br>点击<strong>生成报告</strong>可在文件目录生成Excel格式报告，报告内容与软件V1版本相同。<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/15.png" alt="生成报告"><br>Excel报告文件中包括两个sheet，Summary：所查询得到的等温线概要；Datas：等温线数据<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/16.png" alt="Summary"><br><img src="/2020/12/23/nist-shi-yong-shuo-ming/17.png" alt="Datas"><br>点击绘制曲线，逐一展示Langmuir模型等温线拟合绘制窗口，关闭一个会显示下一个，直至全部输出。通过窗口按键可以进行保存等操作。<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/18.png" alt="绘图输出窗口"><br><strong><font color="red"> 极少数曲线会拟合失败无法绘图。 </font></strong><br>####查询其他条目仅重新选择变化条目即可。</p><h6 id="请大家提出建议，出现报错闪退截图发给我。共同进步"><a href="#请大家提出建议，出现报错闪退截图发给我。共同进步" class="headerlink" title="请大家提出建议，出现报错闪退截图发给我。共同进步"></a>请大家提出建议，出现报错闪退截图发给我。共同进步</h6><h2 id><a href="#" class="headerlink" title></a></h2><p>##<del><strong>(下文已废弃)</strong></del></p><h2 id="v1-0使用教程"><a href="#v1-0使用教程" class="headerlink" title="v1.0使用教程"></a><del>v1.0使用教程</del></h2><h3 id="1、程序下载-1"><a href="#1、程序下载-1" class="headerlink" title="1、程序下载"></a>1、程序下载</h3><p>在NAS中<code>\\Adsor-NAS\吸附量数据\NIST2021程序</code>文件夹中下载最新压缩包至电脑并解压。<br><a href="http://192.168.31.111:5000/sharing/67WAMbNsD">337&amp;338直达下载</a></p><blockquote><p>本地存放路径不可有中文。</p></blockquote><p><img src="/2020/12/23/nist-shi-yong-shuo-ming/1.png" alt="下载文件夹"></p><h3 id="2、索引等温线"><a href="#2、索引等温线" class="headerlink" title="2、索引等温线"></a>2、索引等温线</h3><p>在解压后的文件夹中找到并双击打开main.exe文件<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/2.png" alt="main.exe"><br>出现下面界面为正常启动，如果闪退就是自己电脑有问题。<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/3.png" alt="启动界面"><br>选取吸附质和吸附剂，注意化学式输入大写。<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/4.png" alt="选取界面"></p><h3 id="3、自动绘图并生成报告"><a href="#3、自动绘图并生成报告" class="headerlink" title="3、自动绘图并生成报告"></a>3、自动绘图并生成报告</h3><p>程序会根据所选吸附质、吸附剂匹配对应等温线，同时输出下面的信息 </p><blockquote><p>[名称、温度、文献、期刊、作者、DOI]</p></blockquote><p><img src="/2020/12/23/nist-shi-yong-shuo-ming/5.png" alt="信息输出"></p><p>随后弹出等温线曲线绘制窗口，关闭一个会显示下一个，直至全部输出。通过窗口下面的按键可以进行保存等操作。<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/6.png" alt="绘图输出窗口"><br>绘图完毕后在程序所在文件夹中会生成以下Excel文件，报告出查询结果。</p><blockquote><p>日期-吸附质-吸附剂.xlsx</p></blockquote><p><img src="/2020/12/23/nist-shi-yong-shuo-ming/7.png" alt="报告文件"><br>Excel报告文件中包括两个sheet，Summary：所查询得到的等温线概要；Datas：等温线数据<br><img src="/2020/12/23/nist-shi-yong-shuo-ming/8.png" alt="Summary"><br><img src="/2020/12/23/nist-shi-yong-shuo-ming/9.png" alt="Datas"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 科研 </category>
+          
+          <category> 编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NIST </tag>
+            
+            <tag> Python </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Test</title>
+      <link href="2020/12/22/test/"/>
+      <url>2020/12/22/test/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h2><p><strong>这是一个测试</strong></p><p>这是一个测试</p><blockquote><p><strong>这是一个测试</strong></p></blockquote><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ this is a code test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

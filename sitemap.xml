@@ -58,14 +58,14 @@
   </url>
   
   <url>
-    <loc>https://scipark.xyz/archives/index.html</loc>
+    <loc>https://scipark.xyz/about/index.html</loc>
     
     <lastmod>2020-12-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://scipark.xyz/about/index.html</loc>
+    <loc>https://scipark.xyz/archives/index.html</loc>
     
     <lastmod>2020-12-26</lastmod>
     
@@ -144,6 +144,13 @@
   </url>
   
   <url>
+    <loc>https://scipark.xyz/tags/test/</loc>
+    <lastmod>2020-12-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://scipark.xyz/tags/NIST/</loc>
     <lastmod>2020-12-28</lastmod>
     <changefreq>daily</changefreq>
@@ -159,13 +166,6 @@
   
   <url>
     <loc>https://scipark.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2020-12-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://scipark.xyz/tags/test/</loc>
     <lastmod>2020-12-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -202,14 +202,14 @@
   </url>
   
   <url>
-    <loc>https://scipark.xyz/categories/%E7%A7%91%E7%A0%94/</loc>
+    <loc>https://scipark.xyz/categories/test/</loc>
     <lastmod>2020-12-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://scipark.xyz/categories/test/</loc>
+    <loc>https://scipark.xyz/categories/%E7%A7%91%E7%A0%94/</loc>
     <lastmod>2020-12-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
