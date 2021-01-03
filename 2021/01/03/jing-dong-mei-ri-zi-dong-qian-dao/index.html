@@ -778,14 +778,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.4k
+                        1.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        4 分
                     </div>
                     
                 
@@ -836,7 +836,7 @@
 <li><p>点击之后，下拉，找到<code>cookie</code>，然后复制就可以了，这个很长，记得<code>cookie</code>这一栏都复制了。这个备用。</p>
 </li>
 </ol>
-<p>![复制Cookie]](京东每日自动签到/9.png)</p>
+<p><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/9.png" alt="复制Cookie"></p>
 <h2 id="3、Github配置修改"><a href="#3、Github配置修改" class="headerlink" title="3、Github配置修改"></a>3、Github配置修改</h2><ul>
 <li><p>在自己的仓库中打开fork过的项目，点击页面的<code>Settings</code>操作按钮。<br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/4.png" alt="Settings"></p>
 </li>
@@ -846,19 +846,19 @@
 <pre class="line-numbers language-none"><code class="language-none">Name: JD_COOKIE
 Value: 复制好的你自己的京东cookie值
 填写完成后 点击 Add secret 按钮<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>![Cookie]](京东每日自动签到/6.png)</p>
+<p><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/6.png" alt="Cookie"></p>
 </li>
-<li><p>启动<code>Github Actions</code><br>点击功能栏中的<code>Actions</code><br>![Actions]](京东每日自动签到/7.jpg)<br>点击绿色按钮，启用<code>Actions</code><br>![Action!]](京东每日自动签到/8.jpg)</p>
+<li><p>启动<code>Github Actions</code><br>点击功能栏中的<code>Actions</code><br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/7.jpg" alt="Actions"><br>点击绿色按钮，启用<code>Actions</code><br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/8.jpg" alt="Action!"></p>
 </li>
 </ul>
 <h2 id="4、微信推送签到结果"><a href="#4、微信推送签到结果" class="headerlink" title="4、微信推送签到结果"></a>4、微信推送签到结果</h2><h3 id="Server酱配置"><a href="#Server酱配置" class="headerlink" title="Server酱配置"></a>Server酱配置</h3><p>「Server酱」，英文名「ServerChan」，是一款「程序员」和「服务器」之间的通信软件。使用 Server酱 前提是已有了 GitHub 账号，登录获取到 key 值，并绑定微信即可。然后会把每日签到的消息给你推送到微信中。</p>
 <ol>
 <li>打开 server 酱的官网[<a target="_blank" rel="noopener" href="http://sc.ftqq.com/3.version]">http://sc.ftqq.com/3.version]</a></li>
-<li>点击右上角的<code>登入</code>链接<br>![Server]](京东每日自动签到/10.jpg)</li>
-<li>会跳入 GitHub 授权页，在该页面填入你在上方注册的 GitHub 账户即可<br>![Github绑定]](京东每日自动签到/11.jpg)</li>
-<li>点击上方的<code>微信推送</code>链接， 然后点击页面中的<code>开始绑定</code><br>![微信绑定]](京东每日自动签到/12.jpg)</li>
-<li>掏出手机，打开微信，扫描屏幕上的二维码，如果未关注，先关注，然后在绑定即可。<br>![微信绑定]](京东每日自动签到/13.jpg)</li>
-<li>绑定后，点击上方的<code>发送消息</code>链接，就可以看到你自己的<code>SCKEY值</code>，保存下来，下面会用到。<br>![Key]](京东每日自动签到/14.jpg)</li>
+<li>点击右上角的<code>登入</code>链接<br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/10.jpg" alt="Server"></li>
+<li>会跳入 GitHub 授权页，在该页面填入你在上方注册的 GitHub 账户即可<br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/11.jpg" alt="Github绑定"></li>
+<li>点击上方的<code>微信推送</code>链接， 然后点击页面中的<code>开始绑定</code><br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/12.jpg" alt="微信绑定"></li>
+<li>掏出手机，打开微信，扫描屏幕上的二维码，如果未关注，先关注，然后在绑定即可。<br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/13.jpg" alt="微信绑定"></li>
+<li>绑定后，点击上方的<code>发送消息</code>链接，就可以看到你自己的<code>SCKEY值</code>，保存下来，下面会用到。<br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/14.jpg" alt="Key"></li>
 </ol>
 <h3 id="Github推送配置"><a href="#Github推送配置" class="headerlink" title="Github推送配置"></a>Github推送配置</h3><ol>
 <li><p>进入仓库的<code>Secrets</code>选项卡再次点击页面右上角的 New secret 按钮<br><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/5.png" alt="Secrets"></p>
@@ -867,7 +867,7 @@ Value: 复制好的你自己的京东cookie值
 <pre class="line-numbers language-none"><code class="language-none">Name: PUSH_KEY
 Value: 你自己的server key值
 填写完成后 点击 Add secret 按钮<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>![Key]](京东每日自动签到/14.png)</p>
+<p><img src="/2021/01/03/jing-dong-mei-ri-zi-dong-qian-dao/14.png" alt="Key"></p>
 </li>
 <li><p>启动<code>Action</code></p>
 </li>
@@ -1333,7 +1333,7 @@ Value: 你自己的server key值
 
             
                 字数统计:&nbsp;
-                <span class="white-color">3.6k</span> 字
+                <span class="white-color">3.5k</span> 字
             
 
             
