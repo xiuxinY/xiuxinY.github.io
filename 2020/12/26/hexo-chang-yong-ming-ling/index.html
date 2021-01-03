@@ -779,7 +779,7 @@ git commit -m &amp;quot;backup&amp;q">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        37
+                        77
                     </div>
                     
 
@@ -812,6 +812,12 @@ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <h2 id="2、备份文件"><a href="#2、备份文件" class="headerlink" title="2、备份文件"></a>2、备份文件</h2><pre class="line-numbers language-none"><code class="language-none">git add . 
 git commit -m &quot;backup&quot; 
 git push origin master <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="3、还原文件"><a href="#3、还原文件" class="headerlink" title="3、还原文件"></a>3、还原文件</h2><p>git强制覆盖</p>
+<pre class="line-numbers language-none"><code class="language-none">git fetch --all
+git reset --hard origin&#x2F;master
+git pull<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>单条执行</p>
+<pre class="line-numbers language-none"><code class="language-none">git fetch --all &amp;&amp;  git reset --hard origin&#x2F;master &amp;&amp; git pull<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
             </div>
             <hr/>
 
@@ -1274,7 +1280,7 @@ v2.0更新内容（2020年12月25日）Merry Christmas- 2.0大版本更新，带
 
             
                 字数统计:&nbsp;
-                <span class="white-color">2.3k</span> 字
+                <span class="white-color">3.6k</span> 字
             
 
             
