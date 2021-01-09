@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>歌单迁移（网易云、QQ音乐 TO Youtube Music、Apple Music）</title>
+      <link href="2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/"/>
+      <url>2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>这两天开了YouTube的印度区会员，家庭车一年不到34块钱，非常划算。YouTube Music的推荐算法非常赞，特别喜欢这个快选功能，选一首歌就能开启今天的歌单。所以想把网易云的歌单转移过来。<br><img src="/2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/1.jpg" alt="YouTube Musci"></p><p>在GitHub上我找到了这个项目<a href="https://github.com/yueyericardo/Netease-to-Youtube-or-Spotify">Netease-to-Youtube-or-Spotify</a>,作者也开发了web版，下面介绍用法，非常方便。</p><h2 id="步骤内容"><a href="#步骤内容" class="headerlink" title="步骤内容"></a>步骤内容</h2><ol><li>复制你的网易云、QQ音乐的歌单ID</li><li>在项目作者Richard Xue的web工具中复制文字版歌单</li><li>利用TunemyMusic网站转移歌单</li></ol><h3 id="1-复制文字版歌单"><a href="#1-复制文字版歌单" class="headerlink" title="1. 复制文字版歌单"></a>1. 复制文字版歌单</h3><ul><li>打开<a href="https://yyrcd.com/2018/11/14/n2s-zh/#3-%E8%BD%AC%E7%A7%BB%E5%88%B0-Youtube-Music-or-Spotify-or-Apple-Music">网易云 / QQ音乐到Youtube Music, Spotify, Apple Music</a></li><li>根据网站提示复制歌单<br><img src="/2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/2.png" alt="复制歌单"><h3 id="2-转移歌单"><a href="#2-转移歌单" class="headerlink" title="2. 转移歌单"></a>2. 转移歌单</h3></li><li>打开<a href="https://www.tunemymusic.com/zh-cn/">TunemyMusic</a><br><img src="/2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/3.png" alt="TunemyMusic"></li><li>操作步骤<br>STEP 1: 选择来源从文本<br><img src="/2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/4.png" alt="TSTEP 1"><br>STEP 2: 粘贴刚刚复制的内容到文本框中，转换歌曲列表<br><img src="/2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/5.png" alt="TSTEP 2"><br>STEP 3: 选择目的地，这里我选择Youtube Music。登录自己的账户即可。<br><img src="/2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/6.png" alt="TSTEP 3"><br>STEP 4: 开始移动。完成后在Youtube Music就能看到我的歌单啦。<br><img src="/2021/01/09/ru-he-jiang-wang-yi-yun-ge-dan-zhuan-yi-zhi-apple-music-youtube-music-deng/7.png" alt="TSTEP 4"></li></ul><blockquote><p>感谢项目作者<a href="https://github.com/yueyericardo">Richard Xue</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小技巧 </category>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 影音 </tag>
+            
+            <tag> 网易云音乐 </tag>
+            
+            <tag> QQ音乐 </tag>
+            
+            <tag> Apple Music </tag>
+            
+            <tag> Youtube Music </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用Emby打造高质量影视中心</title>
       <link href="2021/01/03/shi-yong-emby-da-zao-gao-zhi-liang-ying-shi-zhong-xin/"/>
       <url>2021/01/03/shi-yong-emby-da-zao-gao-zhi-liang-ying-shi-zhong-xin/</url>
