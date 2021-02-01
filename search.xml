@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>基于Emby打造你的高品质数字影院</title>
+      <link href="2021/01/28/emby/"/>
+      <url>2021/01/28/emby/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>什么是Emby？</p><blockquote><p>Emby是可用于将媒体流式传输到本地和通过Internet远程传输到各种设备的媒体服务器选项。它包含服务端和客户端。服务端用于整理电影和剧集，客户端连上服务端后就能播放这些影片。你可以将它视为自己的视频网站，您可以随身携带，甚至与家人和朋友共享。<br>用大白话说：它能够把你下载的各种视频进行整理，并且通过局域网或者互联网推送到你各个设备上。</p></blockquote></blockquote><p>类似的平台还有PLex、Jellyfin、Kodi等。</p><h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p>下面是成品展示：<br><img src="/2021/01/28/emby/1.png" alt="电影"><br><img src="/2021/01/28/emby/2.png" alt="剧集"><br><img src="/2021/01/28/emby/3.png" alt="剧集分季"><br><img src="/2021/01/28/emby/4.png" alt="手机端"></p><p>以上是我自己的Emby服务器的展示，只展示了电脑端和手机端的截图，事实上Emby支持特别多的终端，包括并不限于<code>Windows、Android、IOS、NAS、Xbox、Android TV等</code>，只有你想不到，没有它做不到。<br>下面的文章计划从以下几个方面来写，包括安装和使用，可能会分好几次更新完：</p><ul><li>Emby Sever的安装</li><li>浏览器播放</li><li>Windows使用</li><li>Android手机使用</li><li>iOS使用</li><li>macOS使用</li><li>Android TV使用</li><li>Apple TV使用</li><li>Xbox使用<h2 id="Emby服务端的安装"><a href="#Emby服务端的安装" class="headerlink" title="Emby服务端的安装"></a>Emby服务端的安装</h2></li></ul><p>进入Emby官网，选择你要安装的平台并下载安装包，不同平台安装过程的设置基本一样。我使用的是Synology NAS做为服务器，由于已经安装了，这里用Windows平台做演示。</p><p>如果你在NAS上安装，可以参考<a href="https://post.smzdm.com/p/aoo6zvk6/">这篇文章</a>。<br><img src="/2021/01/28/emby/5.png" alt="Emby支持的服务器端"></p><ol><li><p>选择语言<br><img src="/2021/01/28/emby/6.png"></p></li><li><p>设置用户名和密码，下面的账户连接不用管他，因为我们没有购买会员，我们将使用破解的方法白嫖。<br><img src="/2021/01/28/emby/7.png"></p></li><li><p>新建你的媒体库内容、显示名称、及文件夹的位置等。语言地区就选简体中文、中国就行。<br><img src="/2021/01/28/emby/8.png"><br>这里我们就设置好了一个电影的媒体库，你可以设置更多的分类，方法一样。<br><img src="/2021/01/28/emby/9.png"></p></li><li><p>首选元数据设置。<br><img src="/2021/01/28/emby/10.png"></p></li><li><p>其他设置，下一步即可。<br><img src="/2021/01/28/emby/11.png"><br><img src="/2021/01/28/emby/12.png"><br><img src="/2021/01/28/emby/13.png"></p></li><li><p>登录你设置的账户。<br><img src="/2021/01/28/emby/14.png"><br>这里我们刚设置好，我的文件夹里也没有东西，只是演示，所以是空的。<br><img src="/2021/01/28/emby/15.png"><br>以后随着你存的电影变多，就会是这样的界面了~<br><img src="/2021/01/28/emby/17.png"><br><img src="/2021/01/28/emby/16.png"></p></li><li><p>查看地址和设置，点击管理Emby Server进入后台，这里能看到内网访问地址为局域网地址加端口8096，外网是公网ip加端口8096。局域网内的设备都可以通过这个地址访问Emby Server。<br><img src="/2021/01/28/emby/19.png"><br><img src="/2021/01/28/emby/18.png"></p></li><li><p>到这里我们就安装好了，以后你只需要按照自己设置的文件夹吧你的影视资源放进去即可。</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Emby </tag>
+            
+            <tag> Kodi </tag>
+            
+            <tag> 影音 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>歌单迁移（网易云、QQ音乐 TO Youtube Music、Apple Music）</title>
       <link href="2021/01/09/ge-dan-zhuan-yi/"/>
       <url>2021/01/09/ge-dan-zhuan-yi/</url>
@@ -57,9 +86,9 @@
             
             <tag> Emby </tag>
             
-            <tag> Nas </tag>
-            
             <tag> 影音 </tag>
+            
+            <tag> Nas </tag>
             
         </tags>
       
