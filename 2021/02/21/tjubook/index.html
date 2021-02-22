@@ -1,0 +1,1851 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <!-- shw2018 洪卫  modify 2019.08.15-->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="TJU羽毛球场地预约程序思路, 小鮽の岛">
+    <meta name="google-site-verification" content="TUkrTss5UO9CC4X_ythDEW2zQfx152CtKjDoFTKGYmU" />
+    <meta name="description" content="介绍下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。
+写作动机近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机的人一天到晚地待在">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>TJU羽毛球场地预约程序思路 | 小鮽の岛</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/lightgallery/1.6.12/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <style type="text/css">
+        
+            
+            code[class*="language-"],
+            pre[class*="language-"] {
+                white-space: pre !important;
+            }
+
+        
+    </style>
+
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    
+    
+        <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+        </script>
+    
+
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+    <body>
+
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小鮽の岛</span>
+                </a>
+            </div>
+            
+
+
+<!-- <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/AV" class="waves-effect waves-light">
+            
+            <i class="fa fa-music"></i>
+            
+            <span>视听</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/galleries" class="waves-effect waves-light">
+            
+            <i class="fa fa-photo"></i>
+            
+            <span>相册</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于我</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/contact" class="waves-effect waves-light">
+            
+            <i class="fa fa-envelope"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul> -->
+
+<!-- 支持二级菜单特性 洪卫 shw2018 modify 2019.09.17  -->
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/" class="waves-effect waves-light">
+              
+                <i class="fa fa-home"></i>
+              
+              <span>首页</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/tags" class="waves-effect waves-light">
+              
+                <i class="fa fa-tags"></i>
+              
+              <span>标签</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/categories" class="waves-effect waves-light">
+              
+                <i class="fa fa-bookmark"></i>
+              
+              <span>分类</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/archives" class="waves-effect waves-light">
+              
+                <i class="fa fa-archive"></i>
+              
+              <span>归档</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/AV" class="waves-effect waves-light">
+              
+                <i class="fa fa-music"></i>
+              
+              <span>视听</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/galleries" class="waves-effect waves-light">
+              
+                <i class="fa fa-photo"></i>
+              
+              <span>相册</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/about" class="waves-effect waves-light">
+              
+                <i class="fa fa-user-circle-o"></i>
+              
+              <span>关于我</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/contact" class="waves-effect waves-light">
+              
+                <i class="fa fa-envelope"></i>
+              
+              <span>留言板</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/friends" class="waves-effect waves-light">
+              
+                <i class="fa fa-address-book"></i>
+              
+              <span>友情链接</span>
+            </a>
+
+            
+      </li>
+    
+
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小鮽の岛</div>
+        <div class="logo-desc">
+            
+            尊前不用翠眉颦。人生如逆旅，我亦是行人。
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/AV" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-music"></i>
+                
+                视听
+            </a>
+        </li>
+        
+        <li>
+            <a href="/galleries" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-photo"></i>
+                
+                相册
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于我
+            </a>
+        </li>
+        
+        <li>
+            <a href="/contact" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-envelope"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/xiuxinY/xiuxinY.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+   
+   
+<!-- 支持二级菜单特性 洪卫 shw2018 modify 2019.09.17  -->
+<!-- <ul class="menu-list mobile-menu-list">
+    
+        <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-home"></i>
+                        
+                        首页
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/tags" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-tags"></i>
+                        
+                        标签
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/categories" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-bookmark"></i>
+                        
+                        分类
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-archive"></i>
+                        
+                        归档
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/AV" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-music"></i>
+                        
+                        视听
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/galleries" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-photo"></i>
+                        
+                        相册
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/about" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-user-circle-o"></i>
+                        
+                        关于我
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-envelope"></i>
+                        
+                        留言板
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/friends" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-address-book"></i>
+                        
+                        友情链接
+                    </a>
+              
+            </li>
+        
+
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/xiuxinY/xiuxinY.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul> -->
+
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/xiuxinY/xiuxinY.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+        
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '5e8fade4fe0b6c839e63ed74c11ffbc3792f2fcf7abb637a7d5353bb84d18bcd';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        TJU羽毛球场地预约程序思路
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- shw2018 洪卫  modify 2019.08.15-->
+<!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Tju/" target="_blank">
+                                <span class="chip bg-color">Tju</span>
+                            </a>
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BF%90%E5%8A%A8/" class="post-category" target="_blank">
+                                运动
+                            </a>
+                        
+                            <a href="/categories/%E8%BF%90%E5%8A%A8/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                编程
+                            </a>
+                        
+                            <a href="/categories/%E8%BF%90%E5%8A%A8/%E7%BC%96%E7%A8%8B/%E6%95%99%E7%A8%8B/" class="post-category" target="_blank">
+                                教程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-02-21
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                        小鮽
+                    
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        8.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        34 分
+                    </div>
+                    
+                
+                
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'></span>
+                    <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                    <span id="busuanzi_value_page_pv" ></span>
+            
+            
+            
+
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。</p>
+<h2 id="写作动机"><a href="#写作动机" class="headerlink" title="写作动机"></a>写作动机</h2><p>近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机的人一天到晚地待在实验室对着电脑对身体不好。但是白天又没时间，所以就想着约个晚上的羽毛球场地，本来想着场地很好约，就没当回事，偶尔闲暇想起来的时候去预约网站上看一下，可没成想，接连好几天都显示无剩余场地可约…比较生气，遂写此文，<strong>以抒心中不平</strong>!</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>天津大学场馆中心预定平台对于大家来讲应该都不陌生，该平台对外提供羽毛球、排球、篮球等场馆的在线预约服务，其目的是为了减少大家使用场地时的冲突，方便师生进行体育锻炼。然而，<strong>场地是有限的</strong>，面对大家日益增长的物质和文化需求，现有的场地资源已经显得力不从心，难以满足大家的需求，<strong>抢订场地的现象也逐渐蔚然成风</strong>。为了探究现有场馆的使用情况，本篇文章利用爬虫等技术进行了北洋园校区羽毛球馆场地预定数据的统计和分析，并分析了预定平台现有的工作流程和不足之处，并基于此研究设计和开源了一套自动预约软件，同时为预定平台中心建设提出了一些改进建议，希望减少脚本抢订等不公平现象的发生。</p>
+<h2 id="一、羽毛球馆场地预约现状"><a href="#一、羽毛球馆场地预约现状" class="headerlink" title="一、羽毛球馆场地预约现状"></a>一、羽毛球馆场地预约现状</h2><h3 id="1-1-预约时间段和场地热度分析"><a href="#1-1-预约时间段和场地热度分析" class="headerlink" title="1.1 预约时间段和场地热度分析"></a>1.1 预约时间段和场地热度分析</h3><p>羽毛球场馆共计12个场地，其中1-8号场地位于场馆主场，9-12号场地位于东侧跑道附件的次场。当然了，大家都知道的嘛，主场的场地空间和相关照明设施要更好一点。每个场地都有使用时间段限制，通常以1小时为单位，从早晨8:00到晚上10:00，同时有些场地由于上课等其他事情的需要，开放时间段有固定限制。场地预定平台每天中午12:00开放后天的场地预定，比如周一中午12:00后可以预约周三的场地，因此类推。下图展示了某日中午12:30的可预约场地截图，红圈标明的地方是晚上7:00-9:00的场地，已经显示无场地可以用或者只剩下次场，而其他时间段的场地余量却比较充裕，我们可以猜测是晚间段的场地比较热门导致了<font color="red"><strong>时间不平衡性</strong></font>的出现。</p>
+<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/E8867512FD2A4C55A3FF563847F4E414/6330">
+
+<p>为了验证猜测，我们采用爬虫对该网页的数据进行定期抓取，每天中午12:00统计昨日场地的剩余情况，将得到的信息绘制出来，如图1、2所示。图1展示了周一至周日羽毛球馆14个时间段场地的预约率，x轴代表每周天数，y轴代表每天的14个时间段，以小时为单位，z轴为标准化后的场地预定率 (e.g. 11/12=0.916，8/8=1)，预定率越高代表该时间段来打球的人越多。我们将三维图投影到xy平面上，如图3所示。可以很明显得看出：</p>
+<ol>
+<li>白天和晚上的差距就更为明显，也表明大部分同学也<font color="red"><strong>更倾向于晚上去场馆打球</strong></font>。</li>
+<li><font color="red"><strong>晚上19:00-21:00的时段最为热门</strong></font>，而同样是晚间的21:00-22:00相对来讲场地比较宽松一些，可能是由于场馆22:00闭馆的原因导致大家不愿意玩到太晚。</li>
+<li><font color="red"><strong>上午场的人数很少</strong></font>，可能是由于上午大家基本都有功课要上，没有精力来体育馆打球。周六也出现了这种现象，而出现这种情况的原因大概是由于<font color="red"><strong>睡懒觉</strong></font>。</li>
+</ol>
+<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/DCE57026388C4EF5A1967ABFE6B88686/7728"> 
+
+<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/5C5B90643E324B0CBC8E8216BE05DC04/7720">
+
+<h3 id="1-2-热门场地竞争性分析"><a href="#1-2-热门场地竞争性分析" class="headerlink" title="1.2 热门场地竞争性分析"></a>1.2 热门场地竞争性分析</h3><p>基于上述的热点时段研究，我们可以得出晚上19:00-21:00时间段比较热门的结论，这也与我们的常识一致，但是这个时间段究竟有多热门呢？亦或者说这些时间段内的场地多久会被大家抢光？</p>
+<p>针对这个问题，我们又抓取了每日12:00开放预约后的网页数据，每隔30秒钟采样，用下一个时间点采到的数据减去上一个时间点的数据就可以得出在这30秒的间隔内有多少场地被预约走，根据此方法，我们绘制了19:00-20:00的8个主场地的预约变化曲线，如图3、4所示，x轴代表时间，y轴代表8个主场地剩余量，蓝色数据点为多次采样的平均值，红色虚线为拟合曲线，我们可以发现：</p>
+<ol>
+<li><font color="red"><strong>场地剩余曲线呈现先快后慢的变化</strong></font>，开放预定的前5分钟，已经有一半的场地被预定走，说明抢订的人还是蛮多的。</li>
+<li>开放预定的前10秒内，已经有场地被预约走，有<font color="red"><strong>很大的可能性存在脚本预约</strong></font>的情况，这个结论图上反映得不太直观，因为采样存在时间延迟，而且事实上预约开放并不是准时的12点0分0秒，这里会在后面叙述。</li>
+<li>8个主场<font color="red"><strong>基本在30分钟内被订光</strong></font>，意思就是如果你不盯着时间点去抢订，能抢到漏网之鱼的几率很小。</li>
+</ol>
+<p><img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/74464435AC7A48C3BF9F9802C5319232/7719"> <img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/5AA79032341F436A8EDCCBDE960025C2/7722"></p>
+<p>文章写到这里，我们可以看<strong>到羽毛球黄金时段的主场地资源匮乏确实很严重</strong>，加上有些脚本抢场的存在，想提前预定上期待的场地可谓难上加难，而且大家也都没有那么多的时间去盯着天天盯着场地。但是，着急上火也没有用，毕竟你也管不了有些人(或者机器)，不过也不是没有办法，对付这些抢场地的最有效手段就是跟他们对着抢，就看谁的程序好、网速快了。第二章我将详细讲述如何去分析场地预定工作流程并编写程序帮我们去实现小目标。</p>
+<h2 id="二、预备知识"><a href="#二、预备知识" class="headerlink" title="二、预备知识"></a>二、预备知识</h2><h3 id="2-1-啥是爬虫？？？"><a href="#2-1-啥是爬虫？？？" class="headerlink" title="2.1 啥是爬虫？？？"></a>2.1 啥是爬虫？？？</h3><p>互联网提供的服务大多数是以网站的形式提供的，而我们需要的数据一般都是从网页中获取的，如电商网站商品信息、商品的评论、微博的信息等。网站的网页是由HTML代码组成的，我们平时通过浏览器访问网页，发出请求后浏览器接收到对应的网页源代码，然后将其解析为页面内容再呈现给我们。</p>
+<p>通俗来讲，<strong>爬虫的基本原理很简单，就是利用程序去代替人去访问网站，并将目标数据保存下来</strong>。爬虫当中涉及到的知识点大概如下，学计算机的人应该不会陌生，这个到后面会一一用到，我们继续往下走。</p>
+<p>web后端知识，GET/POST，session等<br>前端HTML、javascript等<br>Java Httpclient使用<br>Jsoup页面解析包<br>正则表达式<br>Timer定时器<br>Java mail包使用<br>注意：未打钩代表可选用</p>
+<h3 id="2-2-如何用程序去模拟浏览器访问网站？"><a href="#2-2-如何用程序去模拟浏览器访问网站？" class="headerlink" title="2.2 如何用程序去模拟浏览器访问网站？"></a>2.2 如何用程序去模拟浏览器访问网站？</h3><p>通常我们访问网站需要一个浏览器(e.g. IE，搜狗，谷歌)，但是程序要想去访问网站，当然需要模拟出来一个浏览器（呃…其实浏览器本身也是程序写的），设计思路就是通过计算机程序来<strong>模拟出一个用户和浏览器，去替代人工进行场地预定</strong>。</p>
+<p>话还没说完，出自于Java的Httpclient包就迫不及待地跳了出来，Httpclient包就是一个专门用于模拟浏览器的java工具包，使用起来也很简单，这里我们用一下小例子来演示下它的使用过程。首先，假设我们需要爬取体育馆预约平台首页的源代码，则需要引入Java的HttpClient包，新建一个httpclient对象，这个对象就相当于一个虚拟浏览器，通过链接发送请求，从而获取到数据，二话不说，上代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">import org.apache.http.impl.client.*;
+
+&#x2F;**
+* 爬虫之httpclient使用Demo
+*&#x2F;
+public class CrawDemo &#123;
+public static void main(String[] args) &#123;
+CloseableHttpClient httpClient &#x3D; HttpClients.createDefault();&#x2F;&#x2F;建立一个新的请求客户端
+HttpGet httpGet &#x3D; new HttpGet(&quot;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Login&#x2F;index.html&quot;); &#x2F;&#x2F;使用HttpGet方式请求网址
+CloseableHttpResponse response &#x3D; null;
+try &#123;
+response &#x3D; httpClient.execute(httpGet); &#x2F;&#x2F;获取网址的返回结果
+HttpEntity entity &#x3D; response.getEntity(); &#x2F;&#x2F;获取返回结果中的实体
+System.out.println(EntityUtils.toString(entity)); &#x2F;&#x2F;将返回的实体输出
+EntityUtils.consume(entity); &#x2F;&#x2F;关闭实体与连接
+&#125; catch (IOException e) &#123;
+e.printStackTrace();
+&#125;
+&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>显然，这就是我们需要的网址对应的页面的源代码，于是我们的第一个爬虫demo就演示完毕了。</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;html&gt; &lt;head&gt;&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;7&quot;&gt;&lt;title&gt;场馆中心&lt;&#x2F;title&gt;&lt;link href&#x3D;&quot;&#x2F;Public&#x2F;Book&#x2F;css&#x2F;login.css&quot; charset&#x3D;&quot;utf-8&quot; type&#x3D;&quot;text&#x2F;css&quot; rel&#x3D;&quot;stylesheet&quot; &#x2F;&gt;&lt;script src&#x3D;&quot;&#x2F;Public&#x2F;Book&#x2F;js&#x2F;jquery-1.7.2.js&quot; type&#x3D;&quot;text&#x2F;javascript&quot; &gt;&lt;&#x2F;script&gt;&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt; $(document).ready(function()&#123; &#x2F;&#x2F;登陆验证 $(&quot;\#logBtn&quot;).click(function()&#123; var data &#x3D; new Object(); $.ajax(&#123; url: &quot;&#x2F;index.php&#x2F;Book&#x2F;Login&#x2F;authCheck.html&quot;, data: data, type:&quot;post&quot;, success: function (text) &#123; if(text&#x3D;&#x3D;&quot;SUCCESS&quot;)&#123; location.href&#x3D;&quot;&#x2F;index.php&#x2F;Book&#x2F;Book&#x2F;index.html&quot;; &#125;else&#123; alert(‘账号或密码输入错误‘); &#125; &#125;, &#125;); &#125;); $(&quot;\#confirmBtn&quot;).click(function()&#123; location.href &#x3D; &quot;https:&#x2F;&#x2F;sso.tju.edu.cn&#x2F;cas&#x2F;login?service&#x3D;&quot;+encodeURI(location); &#125;); &#125;); &lt;&#x2F;script&gt;&lt;&#x2F;head&gt;&lt;body class&#x3D;&quot;p-body&quot;&gt;&lt;div class&#x3D;&quot;m-logbg&quot; id&#x3D;&quot;m-logbg&quot;&gt;&lt;&#x2F;div&gt;&lt;div class&#x3D;&quot;m-loginTab&quot;&gt;&lt;ul&gt;&lt;li style&#x3D;&quot;text-align:left; padding-left:15%;&quot;&gt;&lt;img src&#x3D;&quot;&#x2F;Public&#x2F;Book&#x2F;images&#x2F;tjuLogo.png&quot; &#x2F;&gt;&lt;&#x2F;li&gt;&lt;li&gt;&lt;img src&#x3D;&quot;&#x2F;Public&#x2F;Book&#x2F;images&#x2F;loginLogo.png&quot; height&#x3D;&quot;200&quot; border&#x3D;&quot;0&quot; &#x2F;&gt;&lt;&#x2F;li&gt;&lt;li&gt;&lt;div id&#x3D;&quot;loginTab&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;name&quot; id&#x3D;&quot;name&quot; &#x2F;&gt;&amp;nbsp;&lt;&#x2F;body&gt; &lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>虽然我们已经使用HttpClient请求成功一个简单的网页。但是，在实际中有很多网页的请求需要附带许多参数设置。在HttpClient 4.3及以上的版本中，这个过程主要包含如下步骤：</p>
+<p>使用List<NameValuePair>添加请求参数<br>使用URI对请求路径及其参数进行组合<br>使用List<Header>设置请求的头部，header相当于设置构造的虚拟浏览器的各项属性（可以理解为其更像真的浏览器）<br>初始化自定义的HttpClient客户端，并设置header<br>使用HttpUriRequest设置请求<br>使用HttpClient请求上述步骤中的HttpUriRequest对象<br>这些步骤会在后面进行详细演示，<font color="red"><strong>看不懂也没关系</strong></font>。</Header></NameValuePair></p>
+<h3 id="2-3-程序是如何得到网页数据的"><a href="#2-3-程序是如何得到网页数据的" class="headerlink" title="2.3 程序是如何得到网页数据的?"></a>2.3 程序是如何得到网页数据的?</h3><p>2.1节我们获取了一个示例页面的HTML源代码，但是这些源码是提供给浏览器解析用的，我们只对页面上标题、时间、数量有用的信息感兴趣，至于乱七八糟的标签之类的东西我们不要。自己写程序解析也不是不可以，不过就是太费劲，这里推荐一款Java的HTML解析器Jsoup，其主要的功能包括解析HTML页面，通过属性名或者id查找、提取数据等。<strong>轮子别人已经造好了</strong>，我们直接拿着用就可以，下面通过一个示例来说明下它的用法，假设我们有个HTML页面的内容如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;html&gt; &lt;div id&#x3D;&quot;list&quot;&gt; &lt;div class&#x3D;&quot;title&quot;&gt; &lt;a href&#x3D;&quot;url1&quot;&gt;第一篇文章&lt;&#x2F;a&gt; &lt;&#x2F;div&gt; &lt;div class&#x3D;&quot;title&quot;&gt; &lt;a href&#x3D;&quot;url2&quot;&gt;第二篇文章&lt;&#x2F;a&gt; &lt;&#x2F;div&gt; &lt;div class&#x3D;&quot;title&quot;&gt; &lt;a href&#x3D;&quot;url3&quot;&gt;第三篇文章&lt;&#x2F;a&gt; &lt;&#x2F;div&gt; &lt;&#x2F;div&gt; &lt;&#x2F;html&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用Jsoup编写规则对每个标题的链接进行解析，整个HTML代码中有一个id=list的父div，其包含3个class=title的子div，每个子div里各包含一个链接和一个标题，解析代码如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">Document doc &#x3D; Jsoup.parse(rawHTML); &#x2F;&#x2F;将当前页面转换成Jsoup的Document对象
+Elements List &#x3D; doc.select(&quot;divid&#x3D;list&quot;).select(&quot;divclass&#x3D;title&quot;); &#x2F;&#x2F;获取所有的父id&#x3D;list且其class&#x3D;title的div标签
+for( Element element : List )&#123; &#x2F;&#x2F;针对每个符合条件的元素进行解析，并输出
+String url &#x3D; element.select(&quot;a&quot;).attr(&quot;href&quot;);
+System.out.println(&quot;Url:\t&quot;+url);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果如下，关于Jsoup的简介就是这些，具体的使用可以单独去学习JSoup的规则，==这里(作)不(者)再(太)讲(懒)解==…</p>
+<pre class="line-numbers language-none"><code class="language-none">Url: url1
+Url: url2
+Url: url3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-4-Chrome网页调试工具有啥用？"><a href="#2-4-Chrome网页调试工具有啥用？" class="headerlink" title="2.4 Chrome网页调试工具有啥用？"></a>2.4 Chrome网页调试工具有啥用？</h3><p>为什么要讲Chrome网页调试工具呢，一般不做网站开发的人基本用不着它，但是要做爬虫就必须…什么？老夫2000000行编码经验，岂会用到这种东西。你确定不用？不用！<strong>嗯，真香…</strong></p>
+<p>Chrome的网页调试工具可以追踪请求的调用过程和附带的参数等信息，通俗来讲，就是可以让我们知道我们访问网页的时候浏览器干了啥，发出去了什么东西，又接收到了什么东西。比如网站登录的时候通常采用POST的形式向服务器发送请求，并将用户名和密码等参数一同发送过去进行验证。这些参数我们在浏览器的链接栏里是看不到的，因此需要抓包工具获取并分析。这里我举出了一个体育馆预定平台登录的抓包分析过程，作为示例演示。</p>
+<p>首先使用浏览器访问：<a target="_blank" rel="noopener" href="http://cgzx.tju.edu.cn:8080/index.php/Book/Book/index">http://cgzx.tju.edu.cn:8080/index.php/Book/Book/index</a> 页面，鼠标右键选择”检查”，浏览器会打开调试界面，如下图所示，勾选”Preserve log”，这样页面一旦跳转，可以保存请求的日志，之后输入账号和密码，点击”登录”按钮，</p>
+<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/8FA08B1E1DBE4C00B31BDE651DA377FB/7127">
+登录成功后我们可以进入到欢迎页面，这时候调试工具窗口发生了如下变化，红圈表示的是刚刚登录请求的链接和相关的参数信息，如下图所示，这里包含的信息到下一章会具体用到，**这里给你们讲了也不明白，索性不讲了...**
+
+<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/8735DE3AE7D340F892D4AE111D10A766/7129">
+
+<h2 id="三、场地预定流程分析"><a href="#三、场地预定流程分析" class="headerlink" title="三、场地预定流程分析"></a>三、场地预定流程分析</h2><p>俗话说，<font color="red"><strong>知己知彼，百战不殆</strong></font>，在我们用写代码抢场地之前，肯定要弄清楚整个过程的工作原理。首先，我们用浏览器去正常的访问预定平台，这个过程对于使用过的同学来讲都不陌生，我们可以绘制一个流程图来说明该过程以及每一步的作用。如下图所示，箭头表示流程走向。</p>
+<pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid">graph TB
+    A登录系统--&gt;|1.携带账号密码|B
+    B选择羽毛球预约--&gt;|携带球种类参数|C
+    C选择北洋园校区--&gt;|携带校区参数|D
+    D查看可供预定的时段--&gt;E
+    E选择时间段和日期--&gt;|携带日期和时间段参数|F
+    F查询并选择可用场地--&gt;|携带场地编号参数|G
+    G确认预约--&gt;|携带预约表单信息|H
+    H&#123;处理并返回结果&#125;--&gt;|成功&#x2F;失败|D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>每个步骤访问的链接如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">步骤</th>
+<th align="center">请求类型</th>
+<th align="center">访问链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">登录</td>
+<td align="center">POST</td>
+<td align="center">/Book/Login/authCheck.html</td>
+</tr>
+<tr>
+<td align="center">选择羽毛球预约</td>
+<td align="center">GET</td>
+<td align="center">/Book/Book/index1.html?cg=01</td>
+</tr>
+<tr>
+<td align="center">选择校区</td>
+<td align="center">GET</td>
+<td align="center">/Book/Book/index2.html?cg=01&amp;cp=02</td>
+</tr>
+<tr>
+<td align="center">选择时间段和日期</td>
+<td align="center">GET</td>
+<td align="center">/Book/Book/index3?day=2018-01-01&amp;time=00001&amp;cg=01&amp;cp=02</td>
+</tr>
+<tr>
+<td align="center">选择场地</td>
+<td align="center">GET</td>
+<td align="center">/Book/Book/index3?day=2018-01-01&amp;time=00001&amp;cg=01&amp;cp=02&amp;cdinfoid=2201</td>
+</tr>
+<tr>
+<td align="center">提交预定信息</td>
+<td align="center">POST</td>
+<td align="center">/Book/Book/order.htm</td>
+</tr>
+<tr>
+<td align="center">注销</td>
+<td align="center">POST</td>
+<td align="center">/Book/Login/logout</td>
+</tr>
+<tr>
+<td align="center">上述链接中的参数解释：</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<ol>
+<li>cg代表羽毛球种类编号，即01</li>
+<li>cp代表北洋园校区编号，即02</li>
+<li>day代表日期，time代表预定时段，00001代表8:00-9:00场，因此类推，每过1个小时加1</li>
+<li>cdinfoid代表场地，2201代表1号场，因此类推，每个场次加1</li>
+</ol>
+<p>注意：1-4条解释的是GET请求，而提交预定信息采用的POST请求，包含参数较多，在后面会详细解释。<br>POST和GET有啥区别？简单来讲，它们是web请求的两种形式，GET的链接在浏览器地址栏里可以看到，POST的不让你看，为啥不让看？安全呗。</p>
+<h2 id="四、程序设计与实现"><a href="#四、程序设计与实现" class="headerlink" title="四、程序设计与实现"></a>四、程序设计与实现</h2><p><font color="red"><strong>拿破仑爷爷说过，不会写代码的学生不是好学生</strong></font>，好了，贴代码…</p>
+<h3 id="4-1-为什么要模拟登录？"><a href="#4-1-为什么要模拟登录？" class="headerlink" title="4.1 为什么要模拟登录？"></a>4.1 为什么要模拟登录？</h3><p>就前面两章写的httpclient使用，Jsoup解析要是直接拿来去定场地，还不够用。为什么呢？你会发现不管是查询时间，还是预定场地，访问第三章表里的哪个链接都出不来数据，学到的这点儿三脚猫功夫还真不行，原因就在于体育馆的预定系统需要登录后才能进行访问操作，不过这也难不倒作者<font color="red"><strong>愤怒的内心</strong></font>，既然需要登录授权，那我们就利用httpclient进行模拟登录，具体实施在4.2节会详细叙述。</p>
+<h3 id="4-2-登录实现与cookie保存"><a href="#4-2-登录实现与cookie保存" class="headerlink" title="4.2 登录实现与cookie保存"></a>4.2 登录实现与cookie保存</h3><p>这里要感谢当时制作平台的相关人员，没有加入验证码，也就为我们免去了验证码识别的麻烦，任务难度就低了一个等级。这里先观察下3.1节里提到的登录页面的源代码的JavaScript代码，如下所示，</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;登陆验证
+$(&quot;#logBtn&quot;).click(function()&#123;
+&#x2F;&#x2F; alert(111);
+var data &#x3D; new Object();
+data.name &#x3D; $(&quot;#name&quot;)0;
+data.pwd &#x3D; $(&quot;#password&quot;)0;
+$.ajax(&#123;
+url: &quot;&#x2F;index.php&#x2F;Book&#x2F;Login&#x2F;authCheck.html&quot;,
+data: data,
+type:&quot;post&quot;,
+success: function (text) &#123;
+if(text&#x3D;&#x3D;&quot;SUCCESS&quot;)&#123;
+location.href&#x3D;&quot;&#x2F;index.php&#x2F;Book&#x2F;Book&#x2F;index.html&quot;;
+&#125;else&#123;
+alert(‘账号或密码输入错误‘);
+&#125;
+&#125;,
+error: function (jqXHR, textStatus, errorThrown) &#123;
+alert(jqXHR.responseText);
+&#125;
+&#125;);
+&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以发现登录采用的是ajax异步请求的方式，请求的路径是”/index.php/Book/Login/authCheck.html”，请求方式是POST请求，封装了用户输入的用户名和密码，如果登录成功，返回”SUCCESS”字符串，页面跳转到”/index.php/Book/Book/index.html”，也就是主页，不成功就弹窗提升。</p>
+<p>什么是ajax？就是页面数据异步刷新技术，通俗讲就是页面不跳转，就能实现跟后台的数据交换。</p>
+<p>不过单独靠这些信息是无法保证成功登录的，那怎么办？当然是要祭出我们的<font color="red"><strong>大杀器Chrome调试工具</strong></font>了，我们展开3.3节里控制台输出的信息，如下图所示，请注意蓝色方框里的数据，分别是request header信息和携带的form表单数据，账号和密码做了==马赛克处理==，所以是不可能给你们看的。</p>
+<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/DCCE396FF59B413993DA592547AA8639/7354">
+接下来，我们来编码实现模拟登录，主要步骤是构造一个httpclient对象，然后按照request header的属性给它赋值，从而把这个<font color="red">**假的浏览器包装的和真的一模一样**</font>（能骗过预定系统的后台服务器就行），之后封装好用户名和密码两个参数，发送登录请求，实现登录。代码如下：
+
+<pre class="line-numbers language-none"><code class="language-none">CloseableHttpClient client &#x3D; HttpClientBuilder.create().build();&#x2F;&#x2F;创建CloseableHttpClient对象
+HttpPost post &#x3D; new HttpPost(Repository.loginUrl); &#x2F;&#x2F;采用post方式的发送请求
+&#x2F;&#x2F;包装模拟浏览器请求头
+post.setHeader(HttpHeaders.ACCEPT, &quot;*&#x2F;*&quot;);
+post.setHeader(HttpHeaders.ACCEPT_ENCODING, &quot;gzip, deflate&quot;);
+post.setHeader(HttpHeaders.ACCEPT_LANGUAGE, &quot;zh-TW,zh;q&#x3D;0.9,en-US;q&#x3D;0.8,en;q&#x3D;0.7,zh-CN;q&#x3D;0.6&quot;);
+post.setHeader(HttpHeaders.CONNECTION, &quot;keep-alive&quot;);
+post.setHeader(HttpHeaders.CONTENT_TYPE, &quot;application&#x2F;x-www-form-urlencoded; charset&#x3D;UTF-8&quot;);
+post.setHeader(HttpHeaders.HOST, &quot;cgzx.tju.edu.cn:8080&quot;);
+post.setHeader(&quot;Origin&quot;, &quot;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&quot;);
+post.setHeader(HttpHeaders.REFERER, &quot;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Login&#x2F;index.html&quot;);
+post.setHeader(HttpHeaders.USER_AGENT, &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;68.0.3440.84 Safari&#x2F;537.36&quot;);
+post.setHeader(&quot;X-Requested-With&quot;, &quot;XMLHttpRequest&quot;);
+&#x2F;&#x2F;封装请求参数
+List&lt;NameValuePair&gt; formparams &#x3D; new ArrayList&lt;NameValuePair&gt;();
+formparams.add(new BasicNameValuePair(&quot;name&quot;,bean.getUserName()));
+formparams.add(new BasicNameValuePair(&quot;pwd&quot;,bean.getPassword()));
+HttpEntity reqEntity &#x3D; new UrlEncodedFormEntity(formparams, &quot;utf-8&quot;);
+post.setEntity(reqEntity);
+post.setConfig(RequestConfig.custom().setConnectTimeout(5000).build());
+&#x2F;&#x2F;发送请求
+HttpClientContext httpClientContext &#x3D; HttpClientContext.create();
+HttpResponse response &#x3D; client.execute(post,httpClientContext);
+&#x2F;&#x2F;接受响应数据
+if(response.getStatusLine().getStatusCode()&#x3D;&#x3D;200)&#123;
+HttpEntity resEntity&#x3D;response.getEntity();
+String message &#x3D; EntityUtils.toString(resEntity, &quot;utf-8&quot;);
+System.out.println(&quot;log in &quot;+message);
+&#125;else&#123;
+System.out.println(&quot;log in error&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述代码就可以实现模拟登录了，登录成功之后收到的message变量值为”SUCCESS”，要是你的密码写错了，会返回”FAILED”，到这里还结束，提到登录往往关联着session会话保持，如果不想每次都登录，可以将session保存下来，客户端叫做cookie的东西可以保存这些信息。</p>
+<p>什么是session？session记录着用户的登录状态，比如登录一次就可以不用再登录，一般具有一个有效期，过期失效。</p>
+<p>考虑到session具有有效期，作者编写代码的时候每次预定前先登录，预定完成后注销，这样<strong>最为简单，也最为安全，同时减少麻烦</strong>。注销代码如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+List&lt;Header&gt; headerList&#x3D;new ArrayList&lt;Header&gt;();
+headerList.add(new BasicHeader(HttpHeaders.ACCEPT, &quot;text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8&quot;));
+headerList.add(new BasicHeader(HttpHeaders.ACCEPT_ENCODING, &quot;gzip, deflate&quot;));
+headerList.add(new BasicHeader(HttpHeaders.ACCEPT_LANGUAGE, &quot;zh-TW,zh;q&#x3D;0.9,en-US;q&#x3D;0.8,en;q&#x3D;0.7,zh-CN;q&#x3D;0.6&quot;));
+headerList.add(new BasicHeader(HttpHeaders.CONNECTION, &quot;keep-alive&quot;));
+headerList.add(new BasicHeader(&quot;Cookie&quot;, &quot;PHPSESSID&#x3D;&quot;+getSessionId())); &#x2F;&#x2F;需要传入cookie里记录的sessionId
+headerList.add(new BasicHeader(HttpHeaders.HOST, &quot;cgzx.tju.edu.cn:8080&quot;));
+headerList.add(new BasicHeader(HttpHeaders.REFERER, &quot;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Login&#x2F;index.html&quot;));
+headerList.add(new BasicHeader(&quot;Upgrade-Insecure-Requests&quot;,&quot;1&quot;));
+headerList.add(new BasicHeader(HttpHeaders.USER_AGENT, &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;68.0.3440.84 Safari&#x2F;537.36&quot;));
+
+&#x2F;&#x2F;构造自定义的HttpClient对象
+HttpClient httpClient &#x3D; HttpClients.custom().setDefaultHeaders(headerList).build();
+URI uri &#x3D; new URIBuilder(Repository.logoutUrl).build(); &#x2F;&#x2F;此处需要填入注销的请求链接
+HttpUriRequest httpUriRequest &#x3D; RequestBuilder.get().setUri(uri).build();
+HttpResponse response &#x3D; httpClient.execute(httpUriRequest); &#x2F;&#x2F;执行注销
+...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里要注意登录要采用POST，之前写程序的时候错用成了GET，发现可以成功登录，但是最后预定的时候每次都失败。</p>
+<h3 id="4-3-监听场地预约开放"><a href="#4-3-监听场地预约开放" class="headerlink" title="4.3 监听场地预约开放"></a>4.3 监听场地预约开放</h3><p>这个地方==是很重要的一个地方==，直接影响到了预约的效率，订到早了，系统没有开放权限，导致定不了；订的完了，被别人抢走了，之前作者不懂事，写了个定时器每天12:00:00准时开抢，发现一次都没有抢到，以后是程序不行，后来发现，妈蛋<font color="red"><strong>预约平台12:02分才放出预定信息</strong></font>，于是写了个监听函数，以便在第一时间预约，代码就两句，如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+while (!visit(Repository.testUrl).contains(day+&quot;&amp;&quot;))&#123;
+Thread.sleep(500); &#x2F;&#x2F;不能定就睡眠等待
+&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>不要小看这两行代码，很NB的哦…</p>
+<h3 id="4-4-寻找预约场地参数"><a href="#4-4-寻找预约场地参数" class="headerlink" title="4.4 寻找预约场地参数"></a>4.4 寻找预约场地参数</h3><p>登录之后，就可以进行相关的场地检索和预约了，这里没有必要一步一步按照第三章里的步骤访问网页，获取源代码，解析参数再拼接往后执行，清楚了各项参数的代表含义和取值范围，预定的事情就变得简单了。大家都知道，<font color="red"><strong>好钢要用在刀刃上</strong></font>，写程序的目的当时是要抢最热门最难抢的场地了，so，我们直接把参数定好，时间段定为19:00-21:00，场地定为1-8号场地，再拼接上要预定的日期，就可以进入确认预定页面了，代码如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">private void driver() throws IOException&#123;
+long curDateMills&#x3D;System.currentTimeMillis();&#x2F;&#x2F;获取当前时间
+String bookDate&#x3D;DateFormats.getInstance().LongToDate(curDateMills+48*3600*1000).substring(0,10);&#x2F;&#x2F;往后加2天
+String bookTime[]&#x3D;Repository.bookTime;&#x2F;&#x2F;要预定的时间段
+int bookPlace&#x3D;Repository.bookPlace;&#x2F;&#x2F;要预定的场地编号
+instance.startBooking(bookDate,bookTime,bookPlace);&#x2F;&#x2F;调用预定函数
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>因为每天可以预定两天后的场地，所以这里加2天</p>
+<p>工作到目前为止完成了70%，接下来是==最重要的地方！！！==</p>
+<p>进入了预定确认页面后，服务器返回一个数据结构，包含预定者的姓名、hash验证值、队列号等，我们需要把这些数据解析出来，然后作为参数作为执行的最后的预定请求，具体的获取方式可以通过抓包工具获得，这里只贴上对应的解析代码。</p>
+<p>首先构造一个实体类，作为数据结构来封装传递数据：</p>
+<pre class="line-numbers language-none"><code class="language-none">public class BookFormBean &#123;
+private String hash;
+private String CELL_PHONE;
+private String REAL_NAME ;
+private String CGINFO_ID;
+private String CDINFO_ID;
+private String CAMPUS_ID;
+private String SEQ_NO;
+private String PRICE;
+private String DISCOUNT;
+private String PRICE_FINAL;
+...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>之后请求预定确认页面的链接，采用Jsoup解析网页源码获取表单数据：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
+* 解析表单数据
+* return 封装好的实体类
+*&#x2F;
+private BookFormBean parseBean(String formStr)&#123;
+Document document &#x3D; Jsoup.parse(formStr);
+String hash &#x3D; document.select(&quot;inputname&#x3D;hash&quot;).attr(&quot;value&quot;);
+String CELL_PHONE &#x3D; document.select(&quot;inputname&#x3D;CELL_PHONE&quot;).attr(&quot;value&quot;);
+String REAL_NAME &#x3D; document.select(&quot;inputname&#x3D;REAL_NAME&quot;).attr(&quot;value&quot;);
+String CGINFO_ID &#x3D; document.select(&quot;inputname&#x3D;CGINFO_ID&quot;).attr(&quot;value&quot;);
+String CDINFO_ID &#x3D; document.select(&quot;inputname&#x3D;CDINFO_ID&quot;).attr(&quot;value&quot;);
+String CAMPUS_ID &#x3D; document.select(&quot;inputname&#x3D;CAMPUS_ID&quot;).attr(&quot;value&quot;);
+String SEQ_NO &#x3D; document.select(&quot;inputname&#x3D;SEQ_NO&quot;).attr(&quot;value&quot;);
+String PRICE &#x3D; document.select(&quot;inputname&#x3D;PRICE&quot;).attr(&quot;value&quot;);
+String DISCOUNT &#x3D; document.select(&quot;inputname&#x3D;DISCOUNT&quot;).attr(&quot;value&quot;);
+String PRICE_FINAL &#x3D; document.select(&quot;inputname&#x3D;PRICE_FINAL&quot;).attr(&quot;value&quot;);
+BookFormBean bean&#x3D;new BookFormBean(hash, CELL_PHONE, REAL_NAME, CGINFO_ID, CDINFO_ID, CAMPUS_ID, SEQ_NO, PRICE, DISCOUNT, PRICE_FINAL);
+return bean;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>封装表单数据，执行预定请求：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+Boolean result&#x3D;false;
+List&lt;NameValuePair&gt; formparams &#x3D; new ArrayList&lt;NameValuePair&gt;();
+&#x2F;&#x2F; 所传参数
+formparams.add(new BasicNameValuePair(&quot;hash&quot;, bean.getHash()));
+formparams.add(new BasicNameValuePair(&quot;CELL_PHONE&quot;, bean.getCELL_PHONE()));
+formparams.add(new BasicNameValuePair(&quot;REAL_NAME&quot;, bean.getREAL_NAME()));
+formparams.add(new BasicNameValuePair(&quot;CGINFO_ID&quot;, bean.getCGINFO_ID()));
+formparams.add(new BasicNameValuePair(&quot;CDINFO_ID&quot;, bean.getCDINFO_ID()));
+formparams.add(new BasicNameValuePair(&quot;CAMPUS_ID&quot;, bean.getCAMPUS_ID()));
+formparams.add(new BasicNameValuePair(&quot;SEQ_NO&quot;, bean.getSEQ_NO()));
+formparams.add(new BasicNameValuePair(&quot;PRICE&quot;, bean.getPRICE()));
+formparams.add(new BasicNameValuePair(&quot;DISCOUNT&quot;, bean.getDISCOUNT()));
+formparams.add(new BasicNameValuePair(&quot;PRICE_FINAL&quot;, bean.getPRICE_FINAL()));
+HttpEntity reqEntity &#x3D; new UrlEncodedFormEntity(formparams, &quot;utf-8&quot;);
+...
+
+HttpResponse response&#x3D;client.execute(post);
+if (response.getStatusLine().getStatusCode()&#x3D;&#x3D;200)&#123;
+&#x2F;&#x2F;HttpEntity resEntity &#x3D; response.getEntity();
+&#x2F;&#x2F;EntityUtils.consume(reqEntity);
+if(bean.getHash()&#x3D;&#x3D;null||bean.getHash().length()&#x3D;&#x3D;0)&#123;
+System.out.println(formats.getNowDate1()+&quot; 场馆已被他人预定 &quot;+confirmUrl);
+result&#x3D;false;
+&#125;
+&#125;else&#123;
+if(bean.getHash()!&#x3D;null&amp;&amp;bean.getHash().length()&gt;5)&#123;
+System.out.println(formats.getNowDate1()+&quot; 预定成功 &quot;+confirmUrl);
+result&#x3D;true;
+&#125;
+&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-5-失败重订机制"><a href="#4-5-失败重订机制" class="headerlink" title="4.5 失败重订机制"></a>4.5 失败重订机制</h3><p>但是我们也不能保证预定每次都能成功，万一你的网络卡一下，或者其它什么原因，导致预定失败，预定程序需要<font color="red"><strong>有一定的纠错能力</strong></font>，为此，我们设计了一套失败重顶机制，来保证订的场地已被预定，就选定其它场地，反正换来换去总能订到的嘛，代码如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+for(int i&#x3D;0;i&lt;time.length;i++)&#123;
+tryNum&#x3D;0;
+while(tryNum&lt;8)&#123;
+tempConfirmUrl&#x3D;Repository.confirmUrl;
+tempConfirmUrl&#x3D;tempConfirmUrl.replace(&quot;D&quot;,day);
+tempConfirmUrl&#x3D;tempConfirmUrl.replace(&quot;T&quot;,timei);
+tempConfirmUrl&#x3D;tempConfirmUrl.replace(&quot;P&quot;,Integer.toString(bookPlace+tryNum));&#x2F;&#x2F;失败则尝试换个场地
+boolean result&#x3D;book(Repository.bookUrl,tempConfirmUrl,getSessionId(),parseBean(visit(tempConfirmUrl)));
+if(result&#x3D;&#x3D;false)&#123;
+tryNum++; &#x2F;&#x2F;预定失败，更新尝试次数
+&#125;else&#123;
+successResult++; &#x2F;&#x2F;预定成功，继续预定下一个时间段的场地
+break;
+&#125;
+&#125;
+&#125;
+if(successResult&gt;0)&#123;
+sendEmail(successResult);&#x2F;&#x2F;发邮件提醒用户
+&#125;else&#123;
+&#x2F;&#x2F;do nothing
+&#125;
+logOut();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-6-邮件提醒功能"><a href="#4-6-邮件提醒功能" class="headerlink" title="4.6 邮件提醒功能"></a>4.6 邮件提醒功能</h3><p>对于预定成功的用户来讲，总不能没事还要登录系统去看一下是否成功了吧，于是就加了一个预定成功的邮件提醒功能，采用java mail包就能实现，代码也不多：</p>
+<pre class="line-numbers language-none"><code class="language-none">#配置文件 sys.properties
+loginUrl&#x3D;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Login&#x2F;authCheck.html
+logoutUrl&#x3D;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Login&#x2F;logout
+indexUrl&#x3D;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Book&#x2F;index
+searchBookedUrl&#x3D;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;QueryBill&#x2F;
+testUrl&#x3D;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Book&#x2F;index2.html?cg&#x3D;01&amp;cp&#x3D;02
+confirmUrl&#x3D;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Book&#x2F;index4?day&#x3D;D&amp;time&#x3D;T&amp;cg&#x3D;01&amp;cp&#x3D;02&amp;cdinfoid&#x3D;P
+bookUrl&#x3D;http:&#x2F;&#x2F;cgzx.tju.edu.cn:8080&#x2F;index.php&#x2F;Book&#x2F;Book&#x2F;order.html
+userName&#x3D;A,B,C
+password&#x3D;a,b,c
+bookTime&#x3D;00012,00013
+bookPlace&#x3D;2201
+
+email protected,email protected,email protected<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>为啥要用好几个账号呢？因为每个账号只能预定两个场地，未过期之前都不可以再预定新的，所以就没法了，只能多开几个号了</p>
+<pre class="line-numbers language-none"><code class="language-none">public void sendEMail(String title,String body) throws InterruptedException&#123;
+for(String item:Repository.mailList)&#123;
+this.sendMessage(item, title, body);
+&#125;
+&#125;
+private void sendMessage(String to_address,String title,String body) &#123;
+String smtphost &#x3D; &quot;smtp.163.com&quot;; &#x2F;&#x2F; 发送邮件的服务器
+String user &#x3D; &quot;email protected&quot;; &#x2F;&#x2F; 邮件服务器登录用户名
+String password &#x3D; &quot;xxxxxxxxxxxx&quot;; &#x2F;&#x2F; 邮件服务器登录密码
+String from &#x3D; &quot;email protected&quot;; &#x2F;&#x2F; 发送人邮件地址
+Send(smtphost,user,password,from,to_address,title,body);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="五、效果评估"><a href="#五、效果评估" class="headerlink" title="五、效果评估"></a>五、效果评估</h2><p>根据在服务器上打包运行的一段时间的评测，发现运行状态还不错，下面是实际表现效果：<br><img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/178F166481F9499791A359EC0004745A/7582"><br>邮件通知：<br><img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/A7067CB51B684AA2A282068026EAD286/7583"></p>
+<p>代码地址：<br><a target="_blank" rel="noopener" href="https://github.com/yananYangYSU/book">https://github.com/yananYangYSU/book</a></p>
+<h2 id="六、个人建议"><a href="#六、个人建议" class="headerlink" title="六、个人建议"></a>六、个人建议</h2><p>为了减少像作者这样的人出现，预定平台可以考虑以下改进措施：</p>
+<ol>
+<li>增添登录验证码机制，提高脚本预约难度。</li>
+<li>预定流程过于简单，建议引入加密机制，提高程序代码预约的复杂度。</li>
+<li>增加反制措施，定时筛查服务器日志，对于频繁出现的IP或者账号进行封号等措施。</li>
+<li>扫描订而不去的用户，超过一定阈值可以冻结账号一段时间。</li>
+</ol>
+<p>当然了，维护系统是要花钱的，作者的建议只是个人看法，可以忽略，哈哈哈哈</p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p><font color="red"><strong>科学技术是把双刃剑</strong></font>，我们使用的时候要以不影响别人正常使用为前提，比如把预定平台搞崩了，或者把场地都约完，不给别人留地方了，这些都是不好的行为，写这篇文章也希望大家学习为主，多了解些知识和技术，同时也锻炼下自己的语言组织和逻辑表达能力，嘻嘻…</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力!</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+            
+            
+            <div class="reprint1">
+                <p>
+                    <span class="reprint1-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://blog.scipark.xyz" class="b-link-green">小鮽の岛</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2021/02/21/tjubook/" class="b-link-green">TJU羽毛球场地预约程序思路</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/02/21/tjubook/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="TJU羽毛球场地预约程序思路">
+                        
+                        <span class="card-title">TJU羽毛球场地预约程序思路</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。
+写作动机近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机的人一天到晚地待在
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E5%8A%A8/" class="post-category" target="_blank">
+                                    运动
+                                </a>
+                            
+                            <a href="/categories/%E8%BF%90%E5%8A%A8/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                            
+                            <a href="/categories/%E8%BF%90%E5%8A%A8/%E7%BC%96%E7%A8%8B/%E6%95%99%E7%A8%8B/" class="post-category" target="_blank">
+                                    教程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Tju/" target="_blank">
+                        <span class="chip bg-color">Tju</span>
+                    </a>
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/01/28/emby/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="基于Emby打造你的高品质数字影院">
+                        
+                        <span class="card-title">基于Emby打造你的高品质数字影院</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            使用Emby来整理你的影视内容，打造自己的数字影院。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category" target="_blank">
+                                    教程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Emby/" target="_blank">
+                        <span class="chip bg-color">Emby</span>
+                    </a>
+                    
+                    <a href="/tags/Kodi/" target="_blank">
+                        <span class="chip bg-color">Kodi</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BD%B1%E9%9F%B3/" target="_blank">
+                        <span class="chip bg-color">影音</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 小鮽の岛<br />'
+            + '作者: 小鮽<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+        <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&copy; xiuxinY. 
+
+            <br>
+            <span id="sitetime"></span><span class="my-face">ღゝ◡╹)ノ♡</span>
+            <br>
+
+            
+
+            
+                          
+                        <span id="busuanzi_container_site_pv" style='display:none'></span>
+                            <i class="fa fa-heart-o"></i>
+                            本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                    
+                    
+                    
+                    
+                        <span id="busuanzi_container_site_uv" style='display:none'></span>
+                            人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    
+                    
+    
+            
+
+
+            
+                字数统计:&nbsp;
+                <span class="white-color">12.7k</span> 字
+            
+
+            
+            <br>
+
+        </div>
+
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/xiuxinY" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+ 
+    <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=2594929786@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+    <a href="https://zhihu.com/people/hong-hong-16-41-21" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
+
+
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=2594929786&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的QQ空间" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+</div>
+
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+
+        var t1 = Date.UTC(2020, 12, 21, 00, 00, 00); //北京时间2020-12-21 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes *
+            minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours +
+            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒" ;
+    } /*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+        var pvcountOffset = 102;  // 初始化首次数据
+        var uvcountOffset = 59;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int); // 停止检测
+            }
+        }
+    });
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "25400d65959c457caa20b5163352cd07"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+        <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+        <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+        <script src="https://cdn.bootcss.com/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+        <script src="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.js"></script>
+        <script src="https://cdn.bootcss.com/scrollprogress/3.0.2/scrollProgress.min.js"></script>
+        <script src="https://cdn.bootcss.com/lightgallery/1.6.12/js/lightgallery-all.min.js"></script>
+        <script src="/js/matery.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VXHVC199CB"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-VXHVC199CB');
+</script>
+
+
+
+        
+            <script src="/libs/others/clicklove.js"></script>
+        
+
+        
+            <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+        <!-- 加入APlayer音乐播放器 xiuxiny -->
+
+
+        <!-- 鼠标点击烟花爆炸效果  洪卫 shw2018 add 2019.09.09 -->
+        
+
+        <!-- 背景雪花飘落特效洪卫 shw2018 add 2019.09.10 -->
+        
+
+        <!-- 鼠标点击文字特效 洪卫 shw2018 add 2019.09.10-->
+        
+            <script src="/js/wenzi.js" type="text/javascript"></script>
+        
+
+        <!-- 背景雪花飘落特效 洪卫 shw2018 add 2019.09.10 -->
+        
+
+        <!-- 在线聊天工具  洪卫 shw2018 add 2019.09.11 -->
+        
+
+        <!-- 背景 canvas-nest  洪卫 shw 2018  add 2019.09.15-->
+        
+
+        <!-- 背景静止彩带  洪卫 shw 2018  add 2019.09.15-->
+        
+
+        <!-- 背景动态彩带 洪卫 shw 2018  add 2019.09.15-->
+        
+            <script type="text/javascript">
+            var windowWidth = $(window).width();
+            if (windowWidth > 992) {
+                document.write('<script type="text/javascript" src="/libs/background/ribbon-dynamic.js"><\/script>');
+            }
+            </script>
+        
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>
