@@ -8,8 +8,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="TJU羽毛球场地预约程序思路, 小鮽の岛">
     <meta name="google-site-verification" content="TUkrTss5UO9CC4X_ythDEW2zQfx152CtKjDoFTKGYmU" />
-    <meta name="description" content="介绍下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。
-写作动机近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机的人一天到晚地待在">
+    <meta name="description" content="介绍本文并非原创文章！下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。
+写作动机近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -811,7 +811,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。</p>
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本文并非原创文章！下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。</p>
 <h2 id="写作动机"><a href="#写作动机" class="headerlink" title="写作动机"></a>写作动机</h2><p>近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机的人一天到晚地待在实验室对着电脑对身体不好。但是白天又没时间，所以就想着约个晚上的羽毛球场地，本来想着场地很好约，就没当回事，偶尔闲暇想起来的时候去预约网站上看一下，可没成想，接连好几天都显示无剩余场地可约…比较生气，遂写此文，<strong>以抒心中不平</strong>!</p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>天津大学场馆中心预定平台对于大家来讲应该都不陌生，该平台对外提供羽毛球、排球、篮球等场馆的在线预约服务，其目的是为了减少大家使用场地时的冲突，方便师生进行体育锻炼。然而，<strong>场地是有限的</strong>，面对大家日益增长的物质和文化需求，现有的场地资源已经显得力不从心，难以满足大家的需求，<strong>抢订场地的现象也逐渐蔚然成风</strong>。为了探究现有场馆的使用情况，本篇文章利用爬虫等技术进行了北洋园校区羽毛球馆场地预定数据的统计和分析，并分析了预定平台现有的工作流程和不足之处，并基于此研究设计和开源了一套自动预约软件，同时为预定平台中心建设提出了一些改进建议，希望减少脚本抢订等不公平现象的发生。</p>
 <h2 id="一、羽毛球馆场地预约现状"><a href="#一、羽毛球馆场地预约现状" class="headerlink" title="一、羽毛球馆场地预约现状"></a>一、羽毛球馆场地预约现状</h2><h3 id="1-1-预约时间段和场地热度分析"><a href="#1-1-预约时间段和场地热度分析" class="headerlink" title="1.1 预约时间段和场地热度分析"></a>1.1 预约时间段和场地热度分析</h3><p>羽毛球场馆共计12个场地，其中1-8号场地位于场馆主场，9-12号场地位于东侧跑道附件的次场。当然了，大家都知道的嘛，主场的场地空间和相关照明设施要更好一点。每个场地都有使用时间段限制，通常以1小时为单位，从早晨8:00到晚上10:00，同时有些场地由于上课等其他事情的需要，开放时间段有固定限制。场地预定平台每天中午12:00开放后天的场地预定，比如周一中午12:00后可以预约周三的场地，因此类推。下图展示了某日中午12:30的可预约场地截图，红圈标明的地方是晚上7:00-9:00的场地，已经显示无场地可以用或者只剩下次场，而其他时间段的场地余量却比较充裕，我们可以猜测是晚间段的场地比较热门导致了<font color="red"><strong>时间不平衡性</strong></font>的出现。</p>
@@ -1376,8 +1376,8 @@ Send(smtphost,user,password,from,to_address,title,body);
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            介绍下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。
-写作动机近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机的人一天到晚地待在
+                            介绍本文并非原创文章！下文转自网络一位老学长的文章，具体出处无从查找。仅仅是整理了MD格式使得文章更加readable。
+写作动机近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机
                         
                     </div>
                     <div class="publish-info">
