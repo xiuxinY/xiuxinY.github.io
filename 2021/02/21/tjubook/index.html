@@ -786,14 +786,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        8.2k
+                        8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        34 分
+                        33 分
                     </div>
                     
                 
@@ -815,18 +815,14 @@
 <h2 id="写作动机"><a href="#写作动机" class="headerlink" title="写作动机"></a>写作动机</h2><p>近期作者疏于运动，加上吃得又多，打篮球天冷，所以想去室内打打羽毛球，锻炼一下身体，生命在于运动嘛，毕竟学计算机的人一天到晚地待在实验室对着电脑对身体不好。但是白天又没时间，所以就想着约个晚上的羽毛球场地，本来想着场地很好约，就没当回事，偶尔闲暇想起来的时候去预约网站上看一下，可没成想，接连好几天都显示无剩余场地可约…比较生气，遂写此文，<strong>以抒心中不平</strong>!</p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>天津大学场馆中心预定平台对于大家来讲应该都不陌生，该平台对外提供羽毛球、排球、篮球等场馆的在线预约服务，其目的是为了减少大家使用场地时的冲突，方便师生进行体育锻炼。然而，<strong>场地是有限的</strong>，面对大家日益增长的物质和文化需求，现有的场地资源已经显得力不从心，难以满足大家的需求，<strong>抢订场地的现象也逐渐蔚然成风</strong>。为了探究现有场馆的使用情况，本篇文章利用爬虫等技术进行了北洋园校区羽毛球馆场地预定数据的统计和分析，并分析了预定平台现有的工作流程和不足之处，并基于此研究设计和开源了一套自动预约软件，同时为预定平台中心建设提出了一些改进建议，希望减少脚本抢订等不公平现象的发生。</p>
 <h2 id="一、羽毛球馆场地预约现状"><a href="#一、羽毛球馆场地预约现状" class="headerlink" title="一、羽毛球馆场地预约现状"></a>一、羽毛球馆场地预约现状</h2><h3 id="1-1-预约时间段和场地热度分析"><a href="#1-1-预约时间段和场地热度分析" class="headerlink" title="1.1 预约时间段和场地热度分析"></a>1.1 预约时间段和场地热度分析</h3><p>羽毛球场馆共计12个场地，其中1-8号场地位于场馆主场，9-12号场地位于东侧跑道附件的次场。当然了，大家都知道的嘛，主场的场地空间和相关照明设施要更好一点。每个场地都有使用时间段限制，通常以1小时为单位，从早晨8:00到晚上10:00，同时有些场地由于上课等其他事情的需要，开放时间段有固定限制。场地预定平台每天中午12:00开放后天的场地预定，比如周一中午12:00后可以预约周三的场地，因此类推。下图展示了某日中午12:30的可预约场地截图，红圈标明的地方是晚上7:00-9:00的场地，已经显示无场地可以用或者只剩下次场，而其他时间段的场地余量却比较充裕，我们可以猜测是晚间段的场地比较热门导致了<font color="red"><strong>时间不平衡性</strong></font>的出现。</p>
-<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/E8867512FD2A4C55A3FF563847F4E414/6330">
-
+<p><img src="/2021/02/21/tjubook/1.png"></p>
 <p>为了验证猜测，我们采用爬虫对该网页的数据进行定期抓取，每天中午12:00统计昨日场地的剩余情况，将得到的信息绘制出来，如图1、2所示。图1展示了周一至周日羽毛球馆14个时间段场地的预约率，x轴代表每周天数，y轴代表每天的14个时间段，以小时为单位，z轴为标准化后的场地预定率 (e.g. 11/12=0.916，8/8=1)，预定率越高代表该时间段来打球的人越多。我们将三维图投影到xy平面上，如图3所示。可以很明显得看出：</p>
 <ol>
 <li>白天和晚上的差距就更为明显，也表明大部分同学也<font color="red"><strong>更倾向于晚上去场馆打球</strong></font>。</li>
 <li><font color="red"><strong>晚上19:00-21:00的时段最为热门</strong></font>，而同样是晚间的21:00-22:00相对来讲场地比较宽松一些，可能是由于场馆22:00闭馆的原因导致大家不愿意玩到太晚。</li>
 <li><font color="red"><strong>上午场的人数很少</strong></font>，可能是由于上午大家基本都有功课要上，没有精力来体育馆打球。周六也出现了这种现象，而出现这种情况的原因大概是由于<font color="red"><strong>睡懒觉</strong></font>。</li>
 </ol>
-<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/DCE57026388C4EF5A1967ABFE6B88686/7728"> 
-
-<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/5C5B90643E324B0CBC8E8216BE05DC04/7720">
-
+<p><img src="/2021/02/21/tjubook/2.png"><br><img src="/2021/02/21/tjubook/3.png"></p>
 <h3 id="1-2-热门场地竞争性分析"><a href="#1-2-热门场地竞争性分析" class="headerlink" title="1.2 热门场地竞争性分析"></a>1.2 热门场地竞争性分析</h3><p>基于上述的热点时段研究，我们可以得出晚上19:00-21:00时间段比较热门的结论，这也与我们的常识一致，但是这个时间段究竟有多热门呢？亦或者说这些时间段内的场地多久会被大家抢光？</p>
 <p>针对这个问题，我们又抓取了每日12:00开放预约后的网页数据，每隔30秒钟采样，用下一个时间点采到的数据减去上一个时间点的数据就可以得出在这30秒的间隔内有多少场地被预约走，根据此方法，我们绘制了19:00-20:00的8个主场地的预约变化曲线，如图3、4所示，x轴代表时间，y轴代表8个主场地剩余量，蓝色数据点为多次采样的平均值，红色虚线为拟合曲线，我们可以发现：</p>
 <ol>
@@ -834,7 +830,7 @@
 <li>开放预定的前10秒内，已经有场地被预约走，有<font color="red"><strong>很大的可能性存在脚本预约</strong></font>的情况，这个结论图上反映得不太直观，因为采样存在时间延迟，而且事实上预约开放并不是准时的12点0分0秒，这里会在后面叙述。</li>
 <li>8个主场<font color="red"><strong>基本在30分钟内被订光</strong></font>，意思就是如果你不盯着时间点去抢订，能抢到漏网之鱼的几率很小。</li>
 </ol>
-<p><img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/74464435AC7A48C3BF9F9802C5319232/7719"> <img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/5AA79032341F436A8EDCCBDE960025C2/7722"></p>
+<p><img src="/2021/02/21/tjubook/4.png"><br><img src="/2021/02/21/tjubook/5.png"></p>
 <p>文章写到这里，我们可以看<strong>到羽毛球黄金时段的主场地资源匮乏确实很严重</strong>，加上有些脚本抢场的存在，想提前预定上期待的场地可谓难上加难，而且大家也都没有那么多的时间去盯着天天盯着场地。但是，着急上火也没有用，毕竟你也管不了有些人(或者机器)，不过也不是没有办法，对付这些抢场地的最有效手段就是跟他们对着抢，就看谁的程序好、网速快了。第二章我将详细讲述如何去分析场地预定工作流程并编写程序帮我们去实现小目标。</p>
 <h2 id="二、预备知识"><a href="#二、预备知识" class="headerlink" title="二、预备知识"></a>二、预备知识</h2><h3 id="2-1-啥是爬虫？？？"><a href="#2-1-啥是爬虫？？？" class="headerlink" title="2.1 啥是爬虫？？？"></a>2.1 啥是爬虫？？？</h3><p>互联网提供的服务大多数是以网站的形式提供的，而我们需要的数据一般都是从网页中获取的，如电商网站商品信息、商品的评论、微博的信息等。网站的网页是由HTML代码组成的，我们平时通过浏览器访问网页，发出请求后浏览器接收到对应的网页源代码，然后将其解析为页面内容再呈现给我们。</p>
 <p>通俗来讲，<strong>爬虫的基本原理很简单，就是利用程序去代替人去访问网站，并将目标数据保存下来</strong>。爬虫当中涉及到的知识点大概如下，学计算机的人应该不会陌生，这个到后面会一一用到，我们继续往下走。</p>
@@ -881,21 +877,10 @@ Url: url3<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <h3 id="2-4-Chrome网页调试工具有啥用？"><a href="#2-4-Chrome网页调试工具有啥用？" class="headerlink" title="2.4 Chrome网页调试工具有啥用？"></a>2.4 Chrome网页调试工具有啥用？</h3><p>为什么要讲Chrome网页调试工具呢，一般不做网站开发的人基本用不着它，但是要做爬虫就必须…什么？老夫2000000行编码经验，岂会用到这种东西。你确定不用？不用！<strong>嗯，真香…</strong></p>
 <p>Chrome的网页调试工具可以追踪请求的调用过程和附带的参数等信息，通俗来讲，就是可以让我们知道我们访问网页的时候浏览器干了啥，发出去了什么东西，又接收到了什么东西。比如网站登录的时候通常采用POST的形式向服务器发送请求，并将用户名和密码等参数一同发送过去进行验证。这些参数我们在浏览器的链接栏里是看不到的，因此需要抓包工具获取并分析。这里我举出了一个体育馆预定平台登录的抓包分析过程，作为示例演示。</p>
 <p>首先使用浏览器访问：<a target="_blank" rel="noopener" href="http://cgzx.tju.edu.cn:8080/index.php/Book/Book/index">http://cgzx.tju.edu.cn:8080/index.php/Book/Book/index</a> 页面，鼠标右键选择”检查”，浏览器会打开调试界面，如下图所示，勾选”Preserve log”，这样页面一旦跳转，可以保存请求的日志，之后输入账号和密码，点击”登录”按钮，</p>
-<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/8FA08B1E1DBE4C00B31BDE651DA377FB/7127">
-登录成功后我们可以进入到欢迎页面，这时候调试工具窗口发生了如下变化，红圈表示的是刚刚登录请求的链接和相关的参数信息，如下图所示，这里包含的信息到下一章会具体用到，**这里给你们讲了也不明白，索性不讲了...**
-
-<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/8735DE3AE7D340F892D4AE111D10A766/7129">
-
+<p><img src="/2021/02/21/tjubook/6.png"><br>登录成功后我们可以进入到欢迎页面，这时候调试工具窗口发生了如下变化，红圈表示的是刚刚登录请求的链接和相关的参数信息，如下图所示，这里包含的信息到下一章会具体用到，<strong>这里给你们讲了也不明白，索性不讲了…</strong></p>
+<p><img src="/2021/02/21/tjubook/7.png"></p>
 <h2 id="三、场地预定流程分析"><a href="#三、场地预定流程分析" class="headerlink" title="三、场地预定流程分析"></a>三、场地预定流程分析</h2><p>俗话说，<font color="red"><strong>知己知彼，百战不殆</strong></font>，在我们用写代码抢场地之前，肯定要弄清楚整个过程的工作原理。首先，我们用浏览器去正常的访问预定平台，这个过程对于使用过的同学来讲都不陌生，我们可以绘制一个流程图来说明该过程以及每一步的作用。如下图所示，箭头表示流程走向。</p>
-<pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid">graph TB
-    A登录系统--&gt;|1.携带账号密码|B
-    B选择羽毛球预约--&gt;|携带球种类参数|C
-    C选择北洋园校区--&gt;|携带校区参数|D
-    D查看可供预定的时段--&gt;E
-    E选择时间段和日期--&gt;|携带日期和时间段参数|F
-    F查询并选择可用场地--&gt;|携带场地编号参数|G
-    G确认预约--&gt;|携带预约表单信息|H
-    H&#123;处理并返回结果&#125;--&gt;|成功&#x2F;失败|D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/02/21/tjubook/8.png"></p>
 <p>每个步骤访问的链接如下表所示：</p>
 <table>
 <thead>
@@ -940,12 +925,8 @@ Url: url3<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <td align="center">POST</td>
 <td align="center">/Book/Login/logout</td>
 </tr>
-<tr>
-<td align="center">上述链接中的参数解释：</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
 </tbody></table>
+<p>上述链接中的参数解释：</p>
 <ol>
 <li>cg代表羽毛球种类编号，即01</li>
 <li>cp代表北洋园校区编号，即02</li>
@@ -981,9 +962,8 @@ alert(jqXHR.responseText);
 <p>可以发现登录采用的是ajax异步请求的方式，请求的路径是”/index.php/Book/Login/authCheck.html”，请求方式是POST请求，封装了用户输入的用户名和密码，如果登录成功，返回”SUCCESS”字符串，页面跳转到”/index.php/Book/Book/index.html”，也就是主页，不成功就弹窗提升。</p>
 <p>什么是ajax？就是页面数据异步刷新技术，通俗讲就是页面不跳转，就能实现跟后台的数据交换。</p>
 <p>不过单独靠这些信息是无法保证成功登录的，那怎么办？当然是要祭出我们的<font color="red"><strong>大杀器Chrome调试工具</strong></font>了，我们展开3.3节里控制台输出的信息，如下图所示，请注意蓝色方框里的数据，分别是request header信息和携带的form表单数据，账号和密码做了==马赛克处理==，所以是不可能给你们看的。</p>
-<img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/DCCE396FF59B413993DA592547AA8639/7354">
-接下来，我们来编码实现模拟登录，主要步骤是构造一个httpclient对象，然后按照request header的属性给它赋值，从而把这个<font color="red">**假的浏览器包装的和真的一模一样**</font>（能骗过预定系统的后台服务器就行），之后封装好用户名和密码两个参数，发送登录请求，实现登录。代码如下：
-
+<p><img src="/2021/02/21/tjubook/9.png"></p>
+<p>接下来，我们来编码实现模拟登录，主要步骤是构造一个httpclient对象，然后按照request header的属性给它赋值，从而把这个<font color="red"><strong>假的浏览器包装的和真的一模一样</strong></font>（能骗过预定系统的后台服务器就行），之后封装好用户名和密码两个参数，发送登录请求，实现登录。代码如下：</p>
 <pre class="line-numbers language-none"><code class="language-none">CloseableHttpClient client &#x3D; HttpClientBuilder.create().build();&#x2F;&#x2F;创建CloseableHttpClient对象
 HttpPost post &#x3D; new HttpPost(Repository.loginUrl); &#x2F;&#x2F;采用post方式的发送请求
 &#x2F;&#x2F;包装模拟浏览器请求头
@@ -1176,7 +1156,10 @@ String password &#x3D; &quot;xxxxxxxxxxxx&quot;; &#x2F;&#x2F; 邮件服务器登
 String from &#x3D; &quot;email protected&quot;; &#x2F;&#x2F; 发送人邮件地址
 Send(smtphost,user,password,from,to_address,title,body);
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="五、效果评估"><a href="#五、效果评估" class="headerlink" title="五、效果评估"></a>五、效果评估</h2><p>根据在服务器上打包运行的一段时间的评测，发现运行状态还不错，下面是实际表现效果：<br><img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/178F166481F9499791A359EC0004745A/7582"><br>邮件通知：<br><img src="https://note.youdao.com/yws/public/resource/d7452ee9e67fb35cc63a452f1117cd99/xmlnote/A7067CB51B684AA2A282068026EAD286/7583"></p>
+<h2 id="五、效果评估"><a href="#五、效果评估" class="headerlink" title="五、效果评估"></a>五、效果评估</h2><p>根据在服务器上打包运行的一段时间的评测，发现运行状态还不错，下面是实际表现效果：</p>
+<p><img src="/2021/02/21/tjubook/10.png"></p>
+<p>邮件通知：</p>
+<p><img src="/2021/02/21/tjubook/11.png"></p>
 <p>代码地址：<br><a target="_blank" rel="noopener" href="https://github.com/yananYangYSU/book">https://github.com/yananYangYSU/book</a></p>
 <h2 id="六、个人建议"><a href="#六、个人建议" class="headerlink" title="六、个人建议"></a>六、个人建议</h2><p>为了减少像作者这样的人出现，预定平台可以考虑以下改进措施：</p>
 <ol>
@@ -1649,7 +1632,7 @@ Send(smtphost,user,password,from,to_address,title,body);
 
             
                 字数统计:&nbsp;
-                <span class="white-color">12.7k</span> 字
+                <span class="white-color">12.5k</span> 字
             
 
             
